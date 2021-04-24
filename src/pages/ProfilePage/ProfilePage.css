@@ -1,0 +1,11 @@
+.body {
+    width: 70%;
+    min-width: 1000px;
+    height: 100vh;
+    background-color: rgba(240,240,240,.8);
+    margin: 0 auto;
+}
+
+.page-container {
+    position: relative;
+}
