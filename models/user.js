@@ -7,7 +7,15 @@ const userSchema = new mongoose.Schema({
   username: {type: String, required: true, lowercase: true, unique: true},
   email: {type: String, required: true, lowercase: true, unique: true},
   password: String,
-  photoUrl: String  // string from aws!
+  photoUrl: String,  // string from aws!
+  friends: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Friend'
+  }],
+  opera: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Opus'
+  }]
 }, {
   timestamps: true
 });
