@@ -5,6 +5,8 @@ import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
 import HomePage from '../HomePage/HomePage';
 import ProfilePage from '../ProfilePage/ProfilePage';
+import OpusIndexPage from '../OpusIndexPage/OpusIndexPage';
+import FriendsPage from '../Friends/Friends';
 import userService from '../../utils/userService';
 
 
@@ -38,6 +40,12 @@ function App() {
              <Switch>
                 <Route exact path="/">
                     <HomePage handleLogout={handleLogout} user={user} />
+                </Route>
+                <Route path="/opera">
+                    <OpusIndexPage handleLogout={handleLogout} user={user} />
+                </Route>
+                <Route path="/friends">
+                    <FriendsPage handleLogout={handleLogout} user={user} />
                 </Route>
                 <Route path="/:username">
                     <ProfilePage handleLogout={handleLogout} user={user} />
