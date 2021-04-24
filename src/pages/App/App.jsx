@@ -3,7 +3,8 @@ import { Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 import SignupPage from '../SignupPage/SignupPage';
 import LoginPage from '../LoginPage/LoginPage';
-import userService from '../../utils/userService'
+import HomePage from '../HomePage/HomePage';
+import userService from '../../utils/userService';
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
   }
 
   function handleLogout(){
+    console.log('handleLogout reached')
     userService.logout();
     setUser({user: null})
   }
@@ -34,7 +36,7 @@ function App() {
             <> 
              <Switch>
                 <Route exact path="/">
-                    This is home page
+                    <HomePage handleLogout={handleLogout} user={user} />
                 </Route>
             </Switch>
             </>
