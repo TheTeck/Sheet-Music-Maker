@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
-import { Segment, Image, Header, Grid, Icon, Form, Button} from 'semantic-ui-react';
+import { Segment, Icon, Image, Header, Grid, Dimmer, Form, Button} from 'semantic-ui-react';
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
 
 
 export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin }) {
 
-    const [invalidForm, setValidForm] = useState(false)
+  const [active, setActive] = useState(false)
+  const [invalidForm, setValidForm] = useState(false)
   const [error, setError ] = useState('')
   const [selectedFile, setSelectedFile] = useState(user.photoUrl)
   const [state, setState]  = useState({
@@ -47,7 +48,18 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
     setSelectedFile(e.target.files[0])
   }
 
+  function handleShow() {
+      setActive(true)
+  }
 
+  function handleHide() {
+      setActive(false)
+  }
+
+  const content = (<Button icon labelPosition='right'>
+                        Choose New Image
+                        <Icon name='file' />
+                    </Button>)
 
 
     return (
@@ -58,9 +70,15 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                 <Segment padded="very">
                     <Grid columns={2}>
                         <Grid.Column textAlign='center'>
-                            <Grid.Row>
-                                <Image centered rounded src={`${user.photoUrl}`} size="large" />
-                            </Grid.Row>
+                            <Dimmer.Dimmable
+                                as={Image}
+                                dimmed={active}
+                                dimmer={{ active, content }}
+                                onMouseEnter={handleShow}
+                                onMouseLeave={handleHide}
+                                size='large'
+                                src={`${user.photoUrl}`}
+                            />
                         </Grid.Column>
 
                         <Grid.Column textAlign='center'>
