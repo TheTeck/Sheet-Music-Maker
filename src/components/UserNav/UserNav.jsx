@@ -8,7 +8,6 @@ export default function UserNav ({ user }) {
     const location = useLocation();
 
     function checkLocation(endpoint) {
-        console.log(location)
         return location.pathname === endpoint ? true : false;
     }
 

@@ -23,6 +23,18 @@ function signup(user) {
   //.then((token) => token.token);
 }
 
+function update(data) {
+  console.log(data, '<== Data')
+  return fetch('/api/users', {
+    method: 'PUT',
+    headers: new Headers({'Content-Type': 'application/json'}),
+    body: JSON.stringify(data)
+  }). then (res => {
+    if (res.ok) return res.json();
+    throw new Error('Unable to update user!');
+  }).then (({token}) => tokenService.setToken(token));
+}
+
 function getUser() {
   return tokenService.getUserFromToken();
 }
@@ -50,5 +62,6 @@ export default {
   signup, 
   logout,
   login,
-  getUser
+  getUser,
+  update
 };

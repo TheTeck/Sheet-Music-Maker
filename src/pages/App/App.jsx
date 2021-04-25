@@ -48,7 +48,7 @@ function App() {
                     <FriendsPage handleLogout={handleLogout} user={user} />
                 </Route>
                 <Route path="/:username">
-                    <ProfilePage handleLogout={handleLogout} user={user} />
+                    <ProfilePage handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin} user={user} />
                 </Route>
             </Switch>
             </>

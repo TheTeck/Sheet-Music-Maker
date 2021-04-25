@@ -11,6 +11,8 @@ export default function SignUpPage(props){
   const [selectedFile, setSelectedFile] = useState('')
   const [state, setState]  = useState({
     username: '',
+    firstname: '',
+    lastname: '',
     email: '',
     password: '',
     passwordConf: '',
@@ -84,6 +86,20 @@ export default function SignUpPage(props){
                       name="username"
                       placeholder="username"
                       value={state.username}
+                      onChange={handleChange}
+                      required
+                    />
+                    <Form.Input                    
+                      name="firstname"
+                      placeholder="first name"
+                      value={state.firstname}
+                      onChange={handleChange}
+                      required
+                    />
+                    <Form.Input                    
+                      name="lastname"
+                      placeholder="last name"
+                      value={state.lastname}
                       onChange={handleChange}
                       required
                     />

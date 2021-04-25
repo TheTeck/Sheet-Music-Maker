@@ -8,8 +8,24 @@ const s3 = new S3(); // initialize the construcotr
 
 module.exports = {
   signup,
-  login
+  login,
+  update
 };
+
+async function update(req, res) {
+  console.log(req.body)
+  try {
+    const user = await User.findOne({email: req.body.email});
+    user.firstname = req.body.firstname;
+    user.lastname = req.body.lastname;
+    user.bio = req.body.bio;
+    await user.save();
+    const token = createJWT(user);
+    res.json({token});
+  } catch (err) {
+    return res.status(500).json(err);
+  }
+}
 
 function signup(req, res) {
   console.log(req.body, req.file)
@@ -18,7 +34,7 @@ function signup(req, res) {
   //////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////
 
-  // FilePath unique name to be saved to our butckt
+  // FilePath unique name to be saved to our bucket
   const filePath = `${uuidv4()}/${req.file.originalname}`
   const params = {Bucket: process.env.BUCKET_NAME, Key: filePath, Body: req.file.buffer};
   //your bucket name goes where collectorcat is 
