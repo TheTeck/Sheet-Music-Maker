@@ -1,0 +1,8 @@
+.btn-container {
+    width: 100%;
+    padding: 20px;
+}
+
+.btn-container > * {
+    margin: 0 10px;
+}

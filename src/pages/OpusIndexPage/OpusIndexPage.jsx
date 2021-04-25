@@ -1,6 +1,8 @@
 import React from 'react';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
+import FileOptionControls from '../../components/FileOptionControls/FileOptionControls';
+import './OpusIndexPage.css';
 
 export default function OpusIndexPage({ user, handleLogout }) {
     return (
@@ -8,7 +10,8 @@ export default function OpusIndexPage({ user, handleLogout }) {
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body">
                 <UserNav user={user} />
-                This is the user Opus Index Page
+                <FileOptionControls />
+                All of the user's works shall be shown here
             </div>
         </div>
     )

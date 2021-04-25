@@ -25,7 +25,7 @@ export default function UserNav ({ user }) {
                     </Link>
                 }
                 content='Home'
-                position='bottom center'
+                position='top center'
             />
             <Popup
                 trigger={
@@ -39,7 +39,7 @@ export default function UserNav ({ user }) {
                     </Link>
                 }
                 content='Profile'
-                position='bottom center'
+                position='top center'
             />
             <Popup
                 trigger={
@@ -53,7 +53,7 @@ export default function UserNav ({ user }) {
                     </Link>
                 }
                 content='Musical Works'
-                position='bottom center'
+                position='top center'
             />
             <Popup
                 trigger={
@@ -68,7 +68,7 @@ export default function UserNav ({ user }) {
                     </Link>
                 }
                 content='Friends'
-                position='bottom center'
+                position='top center'
             />
             
         </Segment>
