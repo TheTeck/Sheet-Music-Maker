@@ -9,3 +9,7 @@
 .page-container {
     position: relative;
 }
+
+p {
+    margin-bottom: 40px;
+}

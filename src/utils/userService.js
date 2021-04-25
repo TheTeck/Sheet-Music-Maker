@@ -24,7 +24,6 @@ function signup(user) {
 }
 
 function update(data) {
-  console.log(data, '<== Data')
   return fetch('/api/users', {
     method: 'PUT',
     headers: new Headers({'Content-Type': 'application/json'}),

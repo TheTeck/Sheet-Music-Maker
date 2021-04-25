@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
-import { Segment, Icon, Image, Header, Grid, Dimmer, Form, Button} from 'semantic-ui-react';
+import { Divider, Segment, Image, Header, Grid, Transition, Form, Button} from 'semantic-ui-react';
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
+import './ProfilePage.css';
 
 
 export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin }) {
 
-  const [active, setActive] = useState(false)
+  const [visible, setVisible] = useState(false)
   const [invalidForm, setValidForm] = useState(false)
   const [error, setError ] = useState('')
-  const [selectedFile, setSelectedFile] = useState(user.photoUrl)
   const [state, setState]  = useState({
     firstname: user.firstname,
     lastname: user.lastname,
@@ -31,36 +31,20 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
 
   async function handleSubmit(e){
     e.preventDefault();
-
-
     try {
       const output = await userService.update(state);
       handleSignUpOrLogin()
+      setVisible(false)
 
     } catch(err){
       console.log(err.message)
       setError(err.message)
     }
-
   }
 
-  function handleFileInput(e){
-    setSelectedFile(e.target.files[0])
-  }
-
-  function handleShow() {
-      setActive(true)
-  }
-
-  function handleHide() {
-      setActive(false)
-  }
-
-  const content = (<Button icon labelPosition='right'>
-                        Choose New Image
-                        <Icon name='file' />
-                    </Button>)
-
+    function handleEditClick() {
+        setVisible(true)
+    }
 
     return (
         <div className="page-container">
@@ -70,61 +54,57 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                 <Segment padded="very">
                     <Grid columns={2}>
                         <Grid.Column textAlign='center'>
-                            <Dimmer.Dimmable
-                                as={Image}
-                                dimmed={active}
-                                dimmer={{ active, content }}
-                                onMouseEnter={handleShow}
-                                onMouseLeave={handleHide}
-                                size='large'
-                                src={`${user.photoUrl}`}
-                            />
+                            <Image src={`${user.photoUrl}`} size='large' rounded/>
                         </Grid.Column>
 
                         <Grid.Column textAlign='center'>
-                            <Grid.Row>
-                                <Header size='huge'>{user.username.toUpperCase()}</Header>
-                            </Grid.Row>
-                            <Grid.Row>
-                                <Form autoComplete="off"  onSubmit={handleSubmit}>
-                                    <Segment stacked> 
-                                        <Form.Input                    
-                                        name="firstname"
-                                        placeholder="first name"
-                                        value={state.firstname}
-                                        onChange={handleChange}
-                                        required
-                                        />
-                                        <Form.Input                    
-                                        name="lastname"
-                                        placeholder="last name"
-                                        value={state.lastname}
-                                        onChange={handleChange}
-                                        required
-                                        />
-                                        <Form.TextArea                
-                                        name="bio"
-                                        placeholder={user.bio ? user.bio : "bio"}
-                                        value={state.bio}
-                                        onChange={handleChange}
-                                        />
-                                        <Button
-                                        type="submit"
-                                        className="btn"
-                                        disabled={invalidForm}
-                                        >
-                                        Update Profile
-                                    </Button>
-                                    </Segment>
-                                    {error ? <ErrorMessage error={error} /> : null}
-                                </Form>
-                            </Grid.Row>
+                            <Divider horizontal>{user.username.toUpperCase()}</Divider>
+                            <p>Composer: <strong>{user.firstname} {user.lastname}</strong></p>
+                            <Divider horizontal>My Bio:</Divider>
+                            <p><strong>{user.bio ? user.bio : 'There is no bio, yet.'}</strong></p>
+                            <Button onClick={handleEditClick}>Edit Profile</Button>
                         </Grid.Column>
                     </Grid>
-
-                    
-                    
                 </Segment>
+
+                <Transition visible={visible} animation='fly left' duration={500}>
+                    <Segment>
+                        <Form autoComplete="off"  onSubmit={handleSubmit}>
+                            <Segment className="profile-edit" stacked> 
+                                <Form.Input                    
+                                name="firstname"
+                                placeholder="first name"
+                                value={state.firstname}
+                                onChange={handleChange}
+                                required
+                                />
+                                <Form.Input                    
+                                name="lastname"
+                                placeholder="last name"
+                                value={state.lastname}
+                                onChange={handleChange}
+                                required
+                                />
+                                <Form.TextArea                
+                                name="bio"
+                                placeholder={user.bio ? user.bio : "bio"}
+                                value={state.bio}
+                                onChange={handleChange}
+                                />
+                                <Button
+                                type="submit"
+                                className="btn"
+                                disabled={invalidForm}
+                                >
+                                Update Profile
+                                </Button>
+                            </Segment>
+                            {error ? <ErrorMessage error={error} /> : null}
+                        </Form>
+                    </Segment>
+                </Transition>
+                    
+                
             </div>
         </div>
     )
