@@ -17,10 +17,6 @@ const userSchema = new mongoose.Schema({
   friends: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Friend'
-  }],
-  opera: [{
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Opus'
   }]
 }, {
   timestamps: true

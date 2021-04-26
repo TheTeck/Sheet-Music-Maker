@@ -3,34 +3,34 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Form, Segment, Button, Grid, Divider} from 'semantic-ui-react';
 import './NewOpusForm.css';
 
-export default function NewOpusForm () {
+export default function NewOpusForm ({ user, handleAddOpus }) {
 
     const [error, setError ] = useState('')
     const [opus, setOpus] = useState({
         title: '',
-        tempo: 120,
-        timeBeat: 4,
-        timeDuration: 4,
+        tempo: '120',
+        timeBeat: '4',
+        timeDuration: '4',
         key: 'C',
         accidental: 'natural',
         mode: 'major'
     });
 
     const beatOptions = [
-        { text: '2', value: '2' },
-        { text: '3', value: '3' },
-        { text: '4', value: '4' },
-        { text: '6', value: '6' },
-        { text: '9', value: '9' },
-        { text: '12', value: '12' }
+        { key: '2', text: '2', value: '2' },
+        { key: '3', text: '3', value: '3' },
+        { key: '4', text: '4', value: '4' },
+        { key: '6', text: '6', value: '6' },
+        { key: '9', text: '9', value: '9' },
+        { key: '12', text: '12', value: '12' }
     ]
 
     const durationOptions = [
-        { text: '2', value: '2' },
-        { text: '4', value: '4' },
-        { text: '6', value: '6' },
-        { text: '8', value: '8' },
-        { text: '12', value: '12' }
+        { key: '2', text: '2', value: '2' },
+        { key: '4', text: '4', value: '4' },
+        { key: '6', text: '6', value: '6' },
+        { key: '8', text: '8', value: '8' },
+        { key: '12', text: '12', value: '12' }
     ]
 
     const keyOptions = [
@@ -55,31 +55,61 @@ export default function NewOpusForm () {
     ]
 
     function handleChange(e){
+        console.log(e.target.name)
         setOpus({
           ...opus,
           [e.target.name]: e.target.value
         })
     }
 
-    async function handleSubmit(e){
-        console.log(opus)
-        // e.preventDefault();
-    
-        // const formData = new FormData();
-        // formData.append('photo', selectedFile);
-    
-        // for (let key in state){
-        //   formData.append(key, state[key])
-        // }
-        // try {
-        //   await userService.signup(formData);
-        //   props.handleSignUpOrLogin()
-    
-        // } catch(err){
-        //   console.log(err.message)
-        //   setError(err.message)
-        // }
-    
+    function handleBeatChange(e, {value}) {
+        setOpus({
+            ...opus,
+            timeBeat: value
+        })
+    }
+
+    function handleDurationChange(e, {value}) {
+        setOpus({
+            ...opus,
+            timeDuration: value
+        })
+    }
+
+    function handleKeyChange(e, {value}) {
+        setOpus({
+            ...opus,
+            key: value
+        })
+    }
+
+    function handleAccidentalChange(e, {value}) {
+        setOpus({
+            ...opus,
+            accidental: value
+        })
+    }
+
+    function handleModeChange(e, {value}) {
+        setOpus({
+            ...opus,
+            mode: value
+        })
+    }
+
+    function handleSubmit(e){
+        e.preventDefault();
+
+        const formattedOpus = {
+            title: opus.title,
+            composer: user.firstname + ' ' + user.lastname,
+            tempo: opus.tempo,
+            timeSignature: [opus.timeBeat, opus.timeDuration],
+            keySignature: [opus.key, opus.accidental, opus.mode]
+        };
+        console.log(formattedOpus, '<<<<, formatted opus')
+        
+        handleAddOpus(formattedOpus);
       }
 
     return (
@@ -109,13 +139,15 @@ export default function NewOpusForm () {
                             label="Time Signature"           
                             name="timeBeat"
                             options={beatOptions}
-                            placeholder='4'
+                            defaultValue='4'
+                            onChange={handleBeatChange}
                             required
                         />
                         <Form.Select              
                             name="timeDuration"
                             placeholder="4"
                             options={durationOptions}
+                            onChange={handleDurationChange}
                             required
                         />
                     </Grid.Column>
@@ -127,6 +159,7 @@ export default function NewOpusForm () {
                         name="key"
                         placeholder="C"
                         options={keyOptions}
+                        onChange={handleKeyChange}
                         required
                     />
                     <Form.Select    
@@ -134,6 +167,7 @@ export default function NewOpusForm () {
                         name="accidental"
                         placeholder={'\u266e'}
                         options={accidentalOptions}
+                        onChange={handleAccidentalChange}
                         required
                     />
                     <Form.Select   
@@ -141,6 +175,7 @@ export default function NewOpusForm () {
                         name="mode"
                         placeholder="Major"
                         options={modeOptions}
+                        onChange={handleModeChange}
                         required
                     />
                 </Form.Group>

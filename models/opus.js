@@ -4,13 +4,17 @@ const opusSchema = mongoose.Schema({
     title: String,
     composer: String,
     opusData: String,
-    tempo: Number,
-    timeSignature: [Number],
+    tempo: String,
+    timeSignature: [String],
     keySignature: [String],
     music: String,
     isPrivate: {
         type: Boolean,
         default: true
+    },
+    user: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'User'
     }
 })
 

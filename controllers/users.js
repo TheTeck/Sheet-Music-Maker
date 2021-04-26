@@ -13,7 +13,6 @@ module.exports = {
 };
 
 async function update(req, res) {
-  console.log(req.body)
   try {
     const user = await User.findOne({email: req.body.email});
     user.firstname = req.body.firstname;
