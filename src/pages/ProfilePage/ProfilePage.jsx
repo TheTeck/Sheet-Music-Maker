@@ -2,16 +2,14 @@ import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
-import { Divider, Segment, Image, Header, Grid, Transition, Form, Button} from 'semantic-ui-react';
+import { Divider, Segment, Image, Grid, Transition, Form, Button} from 'semantic-ui-react';
 import userService from '../../utils/userService';
-import { useHistory } from 'react-router-dom';
 import './ProfilePage.css';
 
 
 export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin }) {
 
   const [visible, setVisible] = useState(false)
-  const [invalidForm, setValidForm] = useState(false)
   const [error, setError ] = useState('')
   const [state, setState]  = useState({
     firstname: user.firstname,
@@ -19,8 +17,6 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
     email: user.email,
     bio: user.bio
   });
-
-  const history = useHistory()
 
   function handleChange(e){
     setState({
@@ -32,7 +28,7 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
   async function handleSubmit(e){
     e.preventDefault();
     try {
-      const output = await userService.update(state);
+      await userService.update(state);
       handleSignUpOrLogin()
       setVisible(false)
 
@@ -94,7 +90,6 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                                 <Button
                                 type="submit"
                                 className="btn"
-                                disabled={invalidForm}
                                 >
                                 Update Profile
                                 </Button>

@@ -28,7 +28,7 @@ function update(data) {
     method: 'PUT',
     headers: new Headers({'Content-Type': 'application/json'}),
     body: JSON.stringify(data)
-  }). then (res => {
+  }).then (res => {
     if (res.ok) return res.json();
     throw new Error('Unable to update user!');
   }).then (({token}) => tokenService.setToken(token));

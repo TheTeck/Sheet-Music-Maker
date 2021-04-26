@@ -1,19 +1,33 @@
-import React from 'react';
+import React, { useState } from 'react';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import FileOptionControls from '../../components/FileOptionControls/FileOptionControls';
-import { Grid, Header } from 'semantic-ui-react';
+import OpusIndex from '../../components/OpusIndex/OpusIndex';
+import NewOpusForm from '../../components/NewOpusForm/NewOpusForm';
+import { Grid, Header, Modal } from 'semantic-ui-react';
 import './OpusIndexPage.css';
 
 export default function OpusIndexPage({ user, handleLogout }) {
+
+    const [active, setActive] = useState(false);
+
+    function handleModalOpen() {
+        setActive(true);
+    }
+
+    function handleModalClose() {
+        setActive(false);
+    }
+
     return (
         <div className="page-container">
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body">
                 <UserNav user={user} />
+
                 <Grid columns={2}>
                     <Grid.Column>
-                        <FileOptionControls />
+                        <FileOptionControls handleModalOpen={handleModalOpen} />
                     </Grid.Column>
                     <Grid.Column>
                         <Header style={{ padding: '10px' }} floated='right' as='h3'>
@@ -22,8 +36,17 @@ export default function OpusIndexPage({ user, handleLogout }) {
                         </Header>
                     </Grid.Column>
                 </Grid>
+
+                <OpusIndex user={user} />
                 
-                All of the user's works shall be shown here
+                <Modal
+                    dimmer='blurring'
+                    onClose={handleModalClose}
+                    onOpen={handleModalOpen}
+                    open={active}
+                    >
+                    <NewOpusForm />
+                </Modal>
             </div>
         </div>
     )

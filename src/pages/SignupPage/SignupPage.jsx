@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Button, Form, Grid, Header, Image, Segment } from 'semantic-ui-react'
+import { Button, Form, Grid, Header, Segment } from 'semantic-ui-react'
 import userService from '../../utils/userService';
 import { useHistory } from 'react-router-dom';
 
 
 export default function SignUpPage(props){
-  const [invalidForm, setValidForm] = useState(false)
   const [error, setError ] = useState('')
   const [selectedFile, setSelectedFile] = useState('')
   const [state, setState]  = useState({
@@ -138,7 +137,6 @@ export default function SignUpPage(props){
                     <Button
                       type="submit"
                       className="btn"
-                      disabled={invalidForm}
                     >
                     Signup
                   </Button>
