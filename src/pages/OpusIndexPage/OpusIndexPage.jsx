@@ -33,7 +33,6 @@ export default function OpusIndexPage({ user, handleLogout }) {
     async function handleAddOpus(opus) {
         try {
             const data = await operaApi.create(opus);
-            console.log(data.opus, '<<<<<<< after create in handleAddOpus');
             setActive(false);
             getOpera()
         } catch (error) {
@@ -63,7 +62,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     </Grid.Column>
                 </Grid>
 
-                <OpusIndex user={user} />
+                <OpusIndex user={user} opera={opera} />
                 
                 <Modal
                     dimmer='blurring'
@@ -71,6 +70,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     onOpen={handleModalOpen}
                     open={active}
                     >
+                    <Modal.Header>New Musical Work</Modal.Header>
                     <NewOpusForm user={user} handleAddOpus={handleAddOpus} />
                 </Modal>
             </div>
