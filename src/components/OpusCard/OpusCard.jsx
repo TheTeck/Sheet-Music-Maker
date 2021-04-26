@@ -7,7 +7,7 @@ export default function OpusCard ({ opus }) {
     return (
         <div className="card-container-outer">
             <Card fluid >
-                <Link href=''>
+                <Link to={`/opera/${opus._id}/edit`}>
                     <div className="card-container-inner">
                         <Card.Content>
                             <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
