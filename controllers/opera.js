@@ -1,7 +1,8 @@
 const Opus = require('../models/opus');
 
 module.exports = {
-    create
+    create,
+    index
 }
 
 
@@ -30,5 +31,19 @@ async function create(req, res) {
 
     } catch (error) {
         res.json({data: error});
+    }
+}
+
+async function index(req, res){
+    try {
+
+        // on a query aka .find({}) you just call .exec() to execulate the .populate('user')
+        const opera = await Opus.find({}).populate('user').exec()
+        // userSchema.set('toObject') gets invoked, to delete the password
+        // when we populate the user so we don't have to worry about sending over the password!
+        
+        res.status(200).json({opera})
+    } catch(err){
+        res.json(err)
     }
 }

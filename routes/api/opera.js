@@ -5,5 +5,6 @@ const operaCtrl = require('../../controllers/opera');
 
 /*---------- Protected Routes ----------*/
 router.post('/', operaCtrl.create);
+router.get('/', operaCtrl.index);
 
 module.exports = router;
