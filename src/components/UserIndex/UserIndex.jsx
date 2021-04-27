@@ -3,16 +3,16 @@ import { Container } from 'semantic-ui-react';
 import UserCard from '../../components/UserCard/UserCard';
 import './UserIndex.css';
 
-export default function UserIndex ({ user, otherUsers }) {
+export default function UserIndex ({ otherUsers, handleUserClick, isID}) {
 
     return (
         <Container centered fluid textAlign='center' className="user-index">
             <div className="flex-container">
-            {otherUsers.length === 0 ? 'There seems to be no other people using this app' : 
+            {otherUsers.length === 0 ? 'There are no users to be shown' : 
                 (
                     otherUsers.map(otherUser => {
                         return (
-                            <UserCard otherUser={otherUser} />
+                            <UserCard isID={isID} otherUser={otherUser} handleUserClick={handleUserClick} />
                         )
                     })
                 )

@@ -66,6 +66,16 @@ function getAll(username) {
   })
 }
 
+function getOneUserById(id) {
+  return fetch(BASE_URL + id, {
+    method: 'GET',
+    headers: new Headers({'Content-Type': 'application/json'})
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Error in the database');
+  })
+}
+
 
 export default {
   signup, 
@@ -74,4 +84,5 @@ export default {
   getUser,
   update,
   getAll,
+  getOneUserById,
 };

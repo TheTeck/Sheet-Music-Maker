@@ -15,7 +15,8 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
     firstname: user.firstname,
     lastname: user.lastname,
     email: user.email,
-    bio: user.bio
+    bio: user.bio,
+    friends: user.friends
   });
 
   function handleChange(e){

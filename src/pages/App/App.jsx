@@ -49,7 +49,7 @@ function App() {
                     <OpusIndexPage handleLogout={handleLogout} user={user} />
                 </Route>
                 <Route path="/following">
-                    <FriendsPage handleLogout={handleLogout} user={user} />
+                    <FriendsPage handleLogout={handleLogout} user={user} handleSignUpOrLogin={handleSignUpOrLogin} />
                 </Route>
                 <Route path="/:username">
                     <ProfilePage handleLogout={handleLogout} handleSignUpOrLogin={handleSignUpOrLogin} user={user} />

@@ -10,8 +10,18 @@ module.exports = {
   signup,
   login,
   update,
-  index
+  index,
+  show
 };
+
+async function show(req, res) {
+  try {
+    const user = await User.findOne({_id: req.params.id});
+    res.json(user);
+  } catch (error) {
+    return res.status(500).json(error)
+  }
+}
 
 async function index(req, res) {
   try {
@@ -28,6 +38,7 @@ async function update(req, res) {
     user.firstname = req.body.firstname;
     user.lastname = req.body.lastname;
     user.bio = req.body.bio;
+    user.friends = req.body.friends
     await user.save();
     const token = createJWT(user);
     res.json({token});

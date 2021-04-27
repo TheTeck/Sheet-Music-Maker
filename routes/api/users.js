@@ -10,6 +10,7 @@ router.post('/login', usersCtrl.login);
 /*---------- Protected Routes ----------*/
 router.put('/', usersCtrl.update);
 router.get('/', usersCtrl.index);
+router.get('/:id', usersCtrl.show);
 
 
 
