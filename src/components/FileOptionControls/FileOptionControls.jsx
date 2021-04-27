@@ -2,10 +2,14 @@ import React from 'react';
 import { Popup, Icon } from 'semantic-ui-react';
 import './FileOptionControls.css';
 
-export default function FileOptionControls({ handleModalOpen }) {
+export default function FileOptionControls({ handleModalOpen, handleDeleteModalOpen }) {
 
-    function handleClick() {
+    function handleAddClick() {
         handleModalOpen();
+    }
+
+    function handleDeleteClick() {
+        handleDeleteModalOpen();
     }
 
     return (
@@ -14,7 +18,7 @@ export default function FileOptionControls({ handleModalOpen }) {
                 trigger={
                     <Icon.Group size='big'>
                         <Icon 
-                            onClick={handleClick}
+                            onClick={handleAddClick}
                             name='file text' 
                             color='black'
                             circular 
@@ -29,6 +33,7 @@ export default function FileOptionControls({ handleModalOpen }) {
                 trigger={
                     <Icon.Group size='big'>
                         <Icon 
+                            onClick={handleDeleteClick}
                             name='file text' 
                             color='black'
                             circular 

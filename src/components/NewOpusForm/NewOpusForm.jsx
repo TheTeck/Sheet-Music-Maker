@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
-import { Form, Segment, Button, Grid, Divider} from 'semantic-ui-react';
+import { Form, Segment, Button, Grid} from 'semantic-ui-react';
 import './NewOpusForm.css';
 
 export default function NewOpusForm ({ user, handleAddOpus }) {

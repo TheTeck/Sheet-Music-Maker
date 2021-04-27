@@ -3,16 +3,16 @@ import { Container } from 'semantic-ui-react';
 import OpusCard from '../../components/OpusCard/OpusCard';
 import './OpusIndex.css';
 
-export default function OpusIndex ({ user, opera }) {
+export default function OpusIndex ({ user, opera, deleteOpus, removeOpus}) {
 
     return (
-        <Container fluid textAlign='center' className="opera-index">
+        <Container centered fluid textAlign='center' className="opera-index">
             <div className="flex-container">
             {opera.length === 0 ? 'You currently have no files available' : 
                 (
                     opera.map(opus => {
                         return (
-                            <OpusCard key={opus._id} opus={opus} />
+                            <OpusCard key={opus._id} opus={opus} deleteOpus={deleteOpus} removeOpus={removeOpus} />
                         )
                     })
                 )

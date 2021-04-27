@@ -2,7 +2,8 @@ const Opus = require('../models/opus');
 
 module.exports = {
     create,
-    index
+    index,
+    deleteOpus
 }
 
 async function create(req, res) {
@@ -35,5 +36,14 @@ async function index(req, res){
         res.status(200).json({opera})
     } catch(err){
         res.json(err)
+    }
+}
+
+async function deleteOpus (req, res) {
+    try {
+        await Opus.findByIdAndDelete(req.params.id);
+        res.json({data: 'opus removed'})
+    } catch(err){
+        res.json({error: err})
     }
 }

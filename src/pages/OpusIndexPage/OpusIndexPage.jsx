@@ -11,6 +11,7 @@ import './OpusIndexPage.css';
 export default function OpusIndexPage({ user, handleLogout }) {
 
     const [active, setActive] = useState(false);
+    const [deleteOpus, setDeleteOpus] = useState(false);
     const [opera, setOpera] = useState([]);
 
     function handleModalOpen() {
@@ -19,6 +20,24 @@ export default function OpusIndexPage({ user, handleLogout }) {
 
     function handleModalClose() {
         setActive(false);
+    }
+
+    function handleDeleteModalOpen() {
+        setDeleteOpus(true);
+    }
+
+    function handleDeleteModalClose() {
+        setDeleteOpus(false);
+    }
+
+    async function removeOpus(opus) {
+        try {
+            await operaApi.removeOpus(opus)
+            setDeleteOpus(false);
+            getOpera()
+        } catch (error) {
+            console.log(error)
+        }
     }
 
     async function getOpera() {
@@ -52,7 +71,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
 
                 <Grid columns={2}>
                     <Grid.Column>
-                        <FileOptionControls handleModalOpen={handleModalOpen} />
+                        <FileOptionControls handleModalOpen={handleModalOpen} handleDeleteModalOpen={handleDeleteModalOpen} />
                     </Grid.Column>
                     <Grid.Column>
                         <Header style={{ padding: '10px' }} floated='right' as='h3'>
@@ -62,7 +81,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     </Grid.Column>
                 </Grid>
 
-                <OpusIndex user={user} opera={opera} />
+                <OpusIndex user={user} opera={opera} deleteOpus={deleteOpus} />
                 
                 <Modal
                     dimmer='blurring'
@@ -72,6 +91,16 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     >
                     <Modal.Header>New Musical Work</Modal.Header>
                     <NewOpusForm user={user} handleAddOpus={handleAddOpus} />
+                </Modal>
+
+                <Modal
+                    dimmer='blurring'
+                    onClose={handleDeleteModalClose}
+                    onOpen={handleDeleteModalOpen}
+                    open={deleteOpus}
+                    >
+                    <Modal.Header>Select A Work To Delete</Modal.Header>
+                    <OpusIndex user={user} opera={opera} deleteOpus={deleteOpus} removeOpus={removeOpus} />
                 </Modal>
             </div>
         </div>
