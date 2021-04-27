@@ -57,9 +57,9 @@ export default function UserNav ({ user }) {
             />
             <Popup
                 trigger={
-                    <Link to={'/friends'}>
+                    <Link to={'/following'}>
                         <Icon 
-                            style={{ color: (checkLocation('/friends') ? "red" : "black") }}
+                            style={{ color: (checkLocation('/following') ? "red" : "black") }}
                             className="user-nav" 
                             size='large' 
                             name='users' 
@@ -67,7 +67,7 @@ export default function UserNav ({ user }) {
                         />
                     </Link>
                 }
-                content='Friends'
+                content='Following'
                 position='top center'
             />
             

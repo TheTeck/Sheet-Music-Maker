@@ -56,11 +56,22 @@ function login(creds) {
   .then(({token}) => tokenService.setToken(token));
 }
 
+function getAll(username) {
+  return fetch(BASE_URL, {
+    method: 'GET',
+    headers: new Headers({'Content-Type': 'application/json'})
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Error in the database');
+  })
+}
+
 
 export default {
   signup, 
   logout,
   login,
   getUser,
-  update
+  update,
+  getAll,
 };

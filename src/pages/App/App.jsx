@@ -48,7 +48,7 @@ function App() {
                 <Route path="/opera">
                     <OpusIndexPage handleLogout={handleLogout} user={user} />
                 </Route>
-                <Route path="/friends">
+                <Route path="/following">
                     <FriendsPage handleLogout={handleLogout} user={user} />
                 </Route>
                 <Route path="/:username">
