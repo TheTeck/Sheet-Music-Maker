@@ -145,7 +145,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
                         />
                         <Form.Select              
                             name="timeDuration"
-                            placeholder="4"
+                            defaultValue="4"
                             options={durationOptions}
                             onChange={handleDurationChange}
                             required
@@ -153,11 +153,10 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
                     </Grid.Column>
                 </Grid>
                 <Form.Group style={{ marginTop: '30px' }} widths="equal">
-                    <Form.Select 
-                          
+                    <Form.Select     
                         label="Key"          
                         name="key"
-                        placeholder="C"
+                        defaultValue="C"
                         options={keyOptions}
                         onChange={handleKeyChange}
                         required
@@ -165,7 +164,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
                     <Form.Select    
                         label="Accidental"
                         name="accidental"
-                        placeholder={'\u266e'}
+                        defaultValue="natural"
                         options={accidentalOptions}
                         onChange={handleAccidentalChange}
                         required
@@ -173,7 +172,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
                     <Form.Select   
                         label="Mode"
                         name="mode"
-                        placeholder="Major"
+                        defaultValue="major"
                         options={modeOptions}
                         onChange={handleModeChange}
                         required
