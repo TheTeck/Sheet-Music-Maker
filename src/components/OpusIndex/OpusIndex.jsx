@@ -3,7 +3,7 @@ import { Container } from 'semantic-ui-react';
 import OpusCard from '../../components/OpusCard/OpusCard';
 import './OpusIndex.css';
 
-export default function OpusIndex ({ user, opera, deleteOpus, removeOpus}) {
+export default function OpusIndex ({ opera, deleteOpus, removeOpus, editOpus }) {
 
     return (
         <Container centered fluid textAlign='center' className="opera-index">
@@ -12,7 +12,7 @@ export default function OpusIndex ({ user, opera, deleteOpus, removeOpus}) {
                 (
                     opera.map(opus => {
                         return (
-                            <OpusCard key={opus._id} opus={opus} deleteOpus={deleteOpus} removeOpus={removeOpus} />
+                            <OpusCard key={opus._id} opus={opus} deleteOpus={deleteOpus} removeOpus={removeOpus} editOpus={editOpus} />
                         )
                     })
                 )

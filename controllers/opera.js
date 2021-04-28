@@ -3,7 +3,17 @@ const Opus = require('../models/opus');
 module.exports = {
     create,
     index,
-    deleteOpus
+    deleteOpus,
+    show
+}
+
+async function show (req, res) {
+    try {
+        const opus = await Opus.findOne({_id: req.params.id})
+        res.status(200).json({opus: opus});
+    } catch (error) {
+        res.json({data: error})
+    }
 }
 
 async function create(req, res) {

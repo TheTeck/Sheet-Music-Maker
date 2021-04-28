@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./Title.css";
 
-export default function Title() {
-  const [title, setTitle] = useState("New Title");
+export default function Title({ opus }) {
+  const [title, setTitle] = useState(opus.title);
   const [isSettingTitle, setIsSettingTitle] = useState(false);
 
   function handleSetTitle() {
     setIsSettingTitle(true);
-  }
+  } 
 
   function handleChange(e) {
     setTitle(e.target.value);
@@ -18,6 +18,7 @@ export default function Title() {
     setIsSettingTitle(false);
   }
 
+  console.log(opus.title)
   return (
     <>
       {isSettingTitle ? (

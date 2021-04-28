@@ -42,7 +42,7 @@ function App() {
                 <Route exact path="/">
                     <HomePage handleLogout={handleLogout} user={user} />
                 </Route>
-                <Route path="/opera/:id/edit">
+                <Route path="/compose">
                     <OpusEdit handleLogout={handleLogout} user={user} />
                 </Route>
                 <Route path="/opera">

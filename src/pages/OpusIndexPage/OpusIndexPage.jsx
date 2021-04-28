@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect} from 'react';
+import { useHistory } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import FileOptionControls from '../../components/FileOptionControls/FileOptionControls';
@@ -7,12 +8,15 @@ import NewOpusForm from '../../components/NewOpusForm/NewOpusForm';
 import * as operaApi from '../../utils/opus-api';
 import { Grid, Header, Modal } from 'semantic-ui-react';
 import './OpusIndexPage.css';
+import { Redirect } from 'react-router';
 
 export default function OpusIndexPage({ user, handleLogout }) {
 
     const [active, setActive] = useState(false);
     const [deleteOpus, setDeleteOpus] = useState(false);
     const [opera, setOpera] = useState([]);
+
+    const history = useHistory()
 
     function handleModalOpen() {
         setActive(true);
@@ -38,6 +42,15 @@ export default function OpusIndexPage({ user, handleLogout }) {
         } catch (error) {
             console.log(error)
         }
+    }
+
+    function editOpus(opus) {
+        history.push({
+            pathname: '/compose',
+            state: {
+                opus: opus
+            }
+        });
     }
 
     async function getOpera() {
@@ -81,7 +94,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     </Grid.Column>
                 </Grid>
 
-                <OpusIndex user={user} opera={opera} deleteOpus={deleteOpus} />
+                <OpusIndex user={user} opera={opera} editOpus={editOpus} />
                 
                 <Modal
                     dimmer='blurring'

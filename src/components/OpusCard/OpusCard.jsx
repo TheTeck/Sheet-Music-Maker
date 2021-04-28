@@ -3,10 +3,14 @@ import { Card } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import './OpusCard.css';
 
-export default function OpusCard ({ opus, deleteOpus, removeOpus}) {
+export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus}) {
 
     function handleDeleteClick() {
         removeOpus(opus._id)
+    }
+
+    function handleEditClick() {
+        editOpus(opus)
     }
 
     return (
@@ -26,8 +30,7 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus}) {
                             </Card.Content>
                         </Card.Content>
                     </div>
-                : <Link to={`/opera/${opus._id}/edit`}>
-                    <div className="card-container-inner">
+                :   <div onClick={handleEditClick} className="card-container-inner">
                         <Card.Content>
                             <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
                             <Card.Content vertical>
@@ -39,7 +42,6 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus}) {
                             </Card.Content>
                         </Card.Content>
                     </div>
-                </Link>
                 }
             </Card>
         </div>

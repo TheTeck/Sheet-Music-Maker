@@ -2,6 +2,15 @@ import tokenService from './tokenService';
 
 const BASE_URL = '/api/opera';
 
+export function getOneById(id) {
+  return fetch(BASE_URL + `/${id}`, {
+    headers: {
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  })
+  .then(res => res.json());
+}
+
 export function create(opus) {
     return fetch(BASE_URL, {
         method: 'POST',
