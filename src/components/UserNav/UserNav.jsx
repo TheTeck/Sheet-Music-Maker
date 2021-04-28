@@ -1,76 +1,113 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Popup, Icon, Segment } from 'semantic-ui-react';
-import { useLocation, Link } from 'react-router-dom';
+import { useLocation, useHistory } from 'react-router-dom';
+import OpusSaveControls from '../../components/OpusSaveControls/OpusSaveControls';
 import './UserNav.css';
 
-export default function UserNav ({ user }) {
+export default function UserNav ({ user, isOpusEdit, changes, saveChanges}) {
 
     const location = useLocation();
+    const history = useHistory();
+
+    console.log('changes:', changes, 'saveChanges:', saveChanges)
+    
+    const [showSaveControls, setShowSaveControls] = useState(false)
 
     function checkLocation(endpoint) {
         return location.pathname === endpoint ? true : false;
     }
 
+    function resetSaveControls() {
+        setShowSaveControls(false)
+    }
+
+    function handleNavClick(e) {
+        if (isOpusEdit && changes) {
+            setShowSaveControls(true)
+        } else {
+            switch (e.target.id) {
+                case 'home':
+                    history.push('/')
+                break;
+                case 'user':
+                    history.push(`/${user.username}`)
+                break;
+                case 'music':
+                    history.push('/opera')
+                break;
+                case 'users':
+                    history.push('/following')
+                break;
+            }
+        }
+    }
+
     return (
-        <Segment textAlign="center">
-            <Popup
-                trigger={
-                    <Link to="/" >
+        <>
+        {
+            showSaveControls ?
+            <OpusSaveControls saveChanges={saveChanges} resetSaveControls={resetSaveControls} />
+            :
+            <Segment textAlign="center">
+                <Popup
+                    trigger={
                         <Icon 
+                            onClick={handleNavClick}
                             style={{ color: (checkLocation('/') ? "red" : "black") }}
                             size='large' 
                             name='home' 
+                            id='home'
                             circular 
                         />
-                    </Link>
-                }
-                content='Home'
-                position='top center'
-            />
-            <Popup
+                    }
+                    content='Home'
+                    position='top center'
+                /> 
+                <Popup
                 trigger={
-                    <Link to={`/${user.username}`}>
-                        <Icon 
-                            style={{ color: (checkLocation(`/${user.username}`) ? "red" : "black") }}
-                            size='large' 
-                            name='user' 
-                            circular 
-                        />
-                    </Link>
+                    <Icon 
+                        onClick={handleNavClick}
+                        style={{ color: (checkLocation(`/${user.username}`) ? "red" : "black") }}
+                        size='large' 
+                        name='user' 
+                        id='user'
+                        circular 
+                    />
                 }
                 content='Profile'
                 position='top center'
-            />
-            <Popup
-                trigger={
-                    <Link to={'/opera'}>
+                />
+                <Popup
+                    trigger={
                         <Icon 
+                            onClick={handleNavClick}
                             style={{ color: (checkLocation('/opera') ? "red" : "black") }}
                             size='large' 
                             name='music' 
+                            id='music'
                             circular 
                         />
-                    </Link>
-                }
-                content='Musical Works'
-                position='top center'
-            />
-            <Popup
-                trigger={
-                    <Link to={'/following'}>
+                    }
+                    content='Musical Works'
+                    position='top center'
+                />
+                <Popup
+                    trigger={
                         <Icon 
+                            onClick={handleNavClick}
                             style={{ color: (checkLocation('/following') ? "red" : "black") }}
                             className="user-nav" 
                             size='large' 
-                            name='users' 
+                            name='users'
+                            id='users'
                             circular 
                         />
-                    </Link>
-                }
-                content='Following'
-                position='top center'
-            />
-            
-        </Segment>
+                    }
+                    content='Following'
+                    position='top center'
+                />
+            </Segment>
+        }
+        </>
     )
 }

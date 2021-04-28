@@ -21,7 +21,7 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus}) {
                     <div className="card-container-inner" onClick={handleDeleteClick}>
                         <Card.Content>
                             <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
-                            <Card.Content vertical>
+                            <Card.Content vertical="true">
                                 <div className="music-placeholder"></div>
                                 <div className="music-placeholder"></div>
                                 <div className="music-placeholder"></div>
@@ -33,7 +33,7 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus}) {
                 :   <div onClick={handleEditClick} className="card-container-inner">
                         <Card.Content>
                             <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
-                            <Card.Content vertical>
+                            <Card.Content vertical="true">
                                 <div className="music-placeholder"></div>
                                 <div className="music-placeholder"></div>
                                 <div className="music-placeholder"></div>

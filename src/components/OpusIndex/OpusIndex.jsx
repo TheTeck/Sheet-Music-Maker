@@ -6,7 +6,7 @@ import './OpusIndex.css';
 export default function OpusIndex ({ opera, deleteOpus, removeOpus, editOpus }) {
 
     return (
-        <Container centered fluid textAlign='center' className="opera-index">
+        <Container centered="true" fluid textAlign='center' className="opera-index">
             <div className="flex-container">
             {opera.length === 0 ? 'You currently have no files available' : 
                 (
