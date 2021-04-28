@@ -11,7 +11,7 @@ export default function OpusSaveControls ({ saveChanges, resetSaveControls }) {
 
     return (
         <Segment textAlign="center">
-            <Header>Changes made. Do you want to save?</Header>
+            <Header>Unsaved changes made. Do you want to save?</Header>
             <Popup
                 trigger={
                     <Icon 

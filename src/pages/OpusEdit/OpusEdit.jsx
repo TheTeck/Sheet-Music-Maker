@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import Opus from '../../components/Opus/Opus';
-import OpusSaveControls from '../../components/OpusSaveControls/OpusSaveControls';
 import './OpusEdit.css';
 
 export default function OpusEdit ({ user, handleLogout}) {
@@ -19,7 +18,14 @@ export default function OpusEdit ({ user, handleLogout}) {
 
     function saveChanges() {
         setChanges(false)
-        console.log('saved!!!')
+    }
+
+    function getUpdatedElement(element, value) {
+        setOpus({
+            ...opus,
+            [element]: value
+        })
+        makeChanges()
     }
 
     return (
@@ -27,7 +33,7 @@ export default function OpusEdit ({ user, handleLogout}) {
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body"> 
                 <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} />
-                <Opus opus={opus} makeChanges={makeChanges} />
+                <Opus opus={opus} makeChanges={makeChanges} getUpdatedElement={getUpdatedElement} />
             </div>
         </div>
     )

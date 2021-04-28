@@ -4,7 +4,7 @@ import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import UserIndex from '../../components/UserIndex/UserIndex';
 import userService from '../../utils/userService';
-import { Button, Modal } from 'semantic-ui-react';
+import { Button, Divider, Modal } from 'semantic-ui-react';
 import './Friends.css'
 
 export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin }) {
@@ -80,6 +80,7 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             <div className="body">
                 <UserNav user={user} />
                 <Button onClick={handleFindClick}>Add Friends</Button>
+                <Divider />
                 <UserIndex isID={true} otherUsers={user.friends} handleUserClick={handleFriendClick} />
             </div>
 

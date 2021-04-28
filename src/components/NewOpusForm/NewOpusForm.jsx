@@ -107,7 +107,6 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
             timeSignature: [opus.timeBeat, opus.timeDuration],
             keySignature: [opus.key, opus.accidental, opus.mode]
         };
-        console.log(formattedOpus, '<<<<, formatted opus')
         
         handleAddOpus(formattedOpus);
       }

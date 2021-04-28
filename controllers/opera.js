@@ -17,8 +17,6 @@ async function show (req, res) {
 }
 
 async function create(req, res) {
-
-    console.log(req.user, 'req.user')
     
         const opus = await Opus.create({
             title: req.body.title,

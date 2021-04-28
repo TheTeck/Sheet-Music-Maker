@@ -8,8 +8,6 @@ export default function UserNav ({ user, isOpusEdit, changes, saveChanges}) {
 
     const location = useLocation();
     const history = useHistory();
-
-    console.log('changes:', changes, 'saveChanges:', saveChanges)
     
     const [showSaveControls, setShowSaveControls] = useState(false)
 

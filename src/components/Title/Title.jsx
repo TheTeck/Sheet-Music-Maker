@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./Title.css";
 
-export default function Title({ opus, makeChanges }) {
-  const [title, setTitle] = useState(opus.title);
+export default function Title({ opusTitle, getUpdatedElement }) {
+  const [title, setTitle] = useState(opusTitle);
   const [isSettingTitle, setIsSettingTitle] = useState(false);
 
   function handleSetTitle() {
@@ -13,10 +13,15 @@ export default function Title({ opus, makeChanges }) {
     setTitle(e.target.value);
   }
 
-  function handleSubmit() {
-    if (title === "") setTitle("Untitled");
+  function handleSubmit(e) {
+    e.preventDefault();
+    if (title === "") {
+      setTitle("Untitled");
+      getUpdatedElement('title', "Untitled")
+    } else {
+      getUpdatedElement('title', {title})
+    }
     setIsSettingTitle(false);
-    makeChanges();
   }
 
   return (
