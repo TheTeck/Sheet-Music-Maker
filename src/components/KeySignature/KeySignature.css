@@ -1,0 +1,11 @@
+.signature {
+    position: absolute;
+    top: 0;
+    left: 40px;
+}
+
+.sharp-1 {
+    font-size: 25px;
+    position: absolute;
+    top: 2px;
+}
