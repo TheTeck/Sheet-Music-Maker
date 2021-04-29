@@ -1,11 +1,53 @@
 .signature {
     position: absolute;
     top: 0;
-    left: 40px;
+    left: 36px;
 }
 
 .sharp-1 {
     font-size: 25px;
     position: absolute;
-    top: 2px;
+    top: -9px;
+}
+
+.sharp-2 {
+    font-size: 25px;
+    position: absolute;
+    top: 9px;
+    left: 10px;
+}
+
+.sharp-3 {
+    font-size: 25px;
+    position: absolute;
+    top: -15px;
+    left: 18px;
+}
+
+.sharp-4 {
+    font-size: 25px;
+    position: absolute;
+    top: 3px;
+    left: 28px;
+}
+
+.sharp-5 {
+    font-size: 25px;
+    position: absolute;
+    top: 21px;
+    left: 38px;
+}
+
+.sharp-6 {
+    font-size: 25px;
+    position: absolute;
+    top: -3px;
+    left: 46px;
+}
+
+.sharp-7 {
+    font-size: 25px;
+    position: absolute;
+    top: 15px;
+    left: 56px;
 }
