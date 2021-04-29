@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import Opus from '../../components/Opus/Opus';
+import ToolPallet from '../../components/ToolPallet/ToolPallet';
 import './OpusEdit.css';
 
 export default function OpusEdit ({ user, handleLogout}) {
@@ -34,6 +35,7 @@ export default function OpusEdit ({ user, handleLogout}) {
             <div className="body"> 
                 <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} />
                 <Opus opus={opus} makeChanges={makeChanges} getUpdatedElement={getUpdatedElement} />
+                <ToolPallet />
             </div>
         </div>
     )
