@@ -4,7 +4,7 @@ import "./Opus.css";
 
 export default function Opus({ opus, makeChanges, getUpdatedElement}) {
 
-  const [pageNumber, setPageNumber] = useState(1)
+  const [pageNumber, setPageNumber] = useState(0)
   const [data, setData] = useState(opus.music.split('_p'))
 
   return (
