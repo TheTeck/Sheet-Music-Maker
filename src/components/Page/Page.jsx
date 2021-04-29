@@ -29,7 +29,11 @@ export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedEl
             {
                 staves.map((staff, index) => {
                     return (
-                    <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} />
+                        <>{
+                        pageNumber === 0 && index === 0 ?
+                            <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={true} />
+                            : <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={false} />
+                        }</>
                 )})
             }
             </div>

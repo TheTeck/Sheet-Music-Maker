@@ -1,0 +1,11 @@
+.time-signature {
+    position: absolute;
+    top: 2px;
+    text-align: center;
+    width: 35px;
+}
+
+.time-signature > * {
+    font-size: 30px;
+    padding-bottom: 4px;
+}

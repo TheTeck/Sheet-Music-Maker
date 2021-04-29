@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import Measure from '../../components/Measure/Measure';
 import KeySignature from '../../components/KeySignature/KeySignature';
+import TimeSignature from '../../components/TimeSignature/TimeSignature';
 import './Staff.css';
 
-export default function Staff({ data, keySignature, timeSignature }) {
+export default function Staff({ data, keySignature, timeSignature, firstStaff }) {
     
     const [measures, setMeasures] = useState(data.split('_m'));
     const [sigWidth, setSigWidth] = useState(0);
@@ -28,11 +29,20 @@ export default function Staff({ data, keySignature, timeSignature }) {
 
             <KeySignature keySig={keySignature} getSigWidth={getSigWidth} />
 
-            <div style={{ width: `calc(100% - ${38 + sigWidth}px)`, left: `${41+sigWidth}px`}} className="measures">
+            <>
+            {
+                firstStaff ? <TimeSignature timeSig={timeSignature} offset={41+sigWidth} /> : ''
+            }
+            </>
+
+            <div style={{ width: `calc(100% - ${38 + sigWidth}px)`, left:  firstStaff ? `${76+sigWidth}px` : `${41+sigWidth}px`}} className="measures">
                 {
                     measures.map((measure, index) => {
                         return (
-                            <Measure key={index} data={measure} wth={181 - (sigWidth/measures.length)} />
+                            <>{
+                                firstStaff ? <Measure key={index} data={measure} wth={181 - ((sigWidth+35)/measures.length)} />
+                                : <Measure key={index} data={measure} wth={181 - (sigWidth/measures.length)} />
+                            }</>
                         )
                     })
                 }
