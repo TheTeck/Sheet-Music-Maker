@@ -19,3 +19,17 @@
     height: 1px;
     background-color: black;
 }
+
+.clef {
+    position: absolute;
+    top: 5px;
+    font-size: 113px;
+}
+
+.measures {
+    height: 49px;
+    position: absolute;
+    top: 0;
+    left: 38px;
+    width: calc(100% - 38px);
+}

@@ -12,6 +12,10 @@ export default function Staff(data) {
             <div className="staff-space"></div>
             <div className="staff-line"></div>
             <div className="staff-space"></div>
+
+            <div className="clef">𝄞</div>
+
+            <div className="measures"></div>
         </div>
     )
 }
