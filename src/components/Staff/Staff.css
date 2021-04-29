@@ -3,8 +3,8 @@
     height: 49px;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
-    border-left: 4px solid black;
-    border-right: 4px solid black;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
     margin-bottom: 100px;
     position: relative;
 }
@@ -30,6 +30,6 @@
     height: 49px;
     position: absolute;
     top: 0;
-    left: 38px;
+    left: 41px;
     width: calc(100% - 38px);
 }

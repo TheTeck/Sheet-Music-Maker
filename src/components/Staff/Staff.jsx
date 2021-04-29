@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
+import Measure from '../../components/Measure/Measure';
 import './Staff.css';
 
-export default function Staff(data) {
-    console.log(data)
+export default function Staff({ data }) {
+    
+    const [measures, setMeasures] = useState(data.split('_m'));
+
     return (
         <div className="staff-outline">
             <div className="staff-space"></div>
@@ -15,7 +18,15 @@ export default function Staff(data) {
 
             <div className="clef">𝄞</div>
 
-            <div className="measures"></div>
+            <div className="measures">
+                {
+                    measures.map((measure, index) => {
+                        return (
+                            <Measure key={index} data={measure} />
+                        )
+                    })
+                }
+            </div>
         </div>
     )
 }
