@@ -105,7 +105,8 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
             composer: user.firstname + ' ' + user.lastname,
             tempo: opus.tempo,
             timeSignature: [opus.timeBeat, opus.timeDuration],
-            keySignature: [opus.key, opus.accidental, opus.mode]
+            keySignature: [opus.key, opus.accidental, opus.mode],
+            music: "_p_s_m_m_m_m_s_m_m_m_m_s_m_m_m_m"
         };
         
         handleAddOpus(formattedOpus);

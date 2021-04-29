@@ -25,6 +25,7 @@ async function create(req, res) {
             tempo: req.body.tempo,
             timeSignature: req.body.timeSignature,
             keySignature: req.body.keySignature,
+            music: req.body.music,
             isPrivate: true,
             user: req.user
         });

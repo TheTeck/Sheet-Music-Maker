@@ -4,16 +4,8 @@ import "./Opus.css";
 
 export default function Opus({ opus, makeChanges, getUpdatedElement}) {
 
-  // this data should be passed as props and created when a new opus is created
-  const testData = '_p_s_m_m_m_m_s_m_m_m_m_s_m_m_m_m'
-
   const [pageNumber, setPageNumber] = useState(1)
-  const [data, setData] = useState(testData.split('_p'))
-
-
-  useEffect(() => {
-    // Do something here
-  }, [])
+  const [data, setData] = useState(opus.music.split('_p'))
 
   return (
     <div className="page">
