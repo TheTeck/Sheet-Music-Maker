@@ -25,13 +25,14 @@ export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedEl
                 </> : ''
             }
             </>
-            <>
+            <div className="staff-container">
             {
                 staves.map((staff, index) => {
+                    return (
                     <Staff key={index} data={staff} />
-                })
+                )})
             }
-            </>
+            </div>
         </>
     )
 }
