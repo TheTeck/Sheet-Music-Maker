@@ -20,9 +20,9 @@ export default function ScoreInfo({ opusData, getUpdatedElement }) {
 
     if (data === "") {
       setData("Opus 1");
-      getUpdatedElement('data', "Opus 1")
+      getUpdatedElement('opusData', "Opus 1")
     } else {
-      getUpdatedElement('data', {data})
+      getUpdatedElement('opusData', data)
     }
     setIsSettingData(false);
   }

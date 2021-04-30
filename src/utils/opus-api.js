@@ -11,6 +11,17 @@ export function getOneById(id) {
   .then(res => res.json());
 }
 
+export function update(opus) {
+  return fetch(BASE_URL + `/${opus.id}`, {
+    method: 'PUT',
+    body: JSON.stringify(opus),
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => res.json())
+}
+
 export function create(opus) {
     return fetch(BASE_URL, {
         method: 'POST',

@@ -19,7 +19,7 @@ export default function Title({ opusTitle, getUpdatedElement }) {
       setTitle("Untitled");
       getUpdatedElement('title', "Untitled")
     } else {
-      getUpdatedElement('title', {title})
+      getUpdatedElement('title', title)
     }
     setIsSettingTitle(false);
   }

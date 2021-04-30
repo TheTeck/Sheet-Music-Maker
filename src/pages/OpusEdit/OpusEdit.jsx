@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import Opus from '../../components/Opus/Opus';
 import ToolPallet from '../../components/ToolPallet/ToolPallet';
+import * as opusApi from '../../utils/opus-api';
 import './OpusEdit.css';
 
 export default function OpusEdit ({ user, handleLogout}) {
@@ -19,6 +20,7 @@ export default function OpusEdit ({ user, handleLogout}) {
     }
 
     function saveChanges() {
+        updateOpus();
         setChanges(false)
     }
 
@@ -27,6 +29,7 @@ export default function OpusEdit ({ user, handleLogout}) {
             ...opus,
             [element]: value
         })
+        console.log(value)
         makeChanges()
     }
 
@@ -34,9 +37,21 @@ export default function OpusEdit ({ user, handleLogout}) {
         setCurrentTool(tool);
     }
 
-    useEffect(() => {
-        console.log(opus)
-    })
+    async function updateOpus () {
+        const data = {
+            id: opus._id,
+            title: opus.title,
+            composer: opus.composer,
+            opusData: opus.opusData,
+            music: opus.music
+        }
+
+        try {
+            await opusApi.update(data);
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
         <div>

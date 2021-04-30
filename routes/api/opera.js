@@ -5,6 +5,7 @@ const operaCtrl = require('../../controllers/opera');
 
 /*---------- Protected Routes ----------*/
 router.post('/', operaCtrl.create);
+router.put('/:id', operaCtrl.update);
 router.get('/', operaCtrl.index);
 router.get('/:id', operaCtrl.show);
 router.delete('/:id', operaCtrl.deleteOpus);

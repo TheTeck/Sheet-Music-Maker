@@ -21,7 +21,7 @@ export default function Composer({ comp, getUpdatedElement }) {
       setComposer("Anonymous");
       getUpdatedElement('composer', "Anonymous")
     } else {
-      getUpdatedElement('composer', {composer})
+      getUpdatedElement('composer', composer)
     }
     setIsSettingComposer(false);
   }

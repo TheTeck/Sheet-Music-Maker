@@ -4,15 +4,30 @@ module.exports = {
     create,
     index,
     deleteOpus,
-    show
+    show,
+    update
 }
 
 async function show (req, res) {
     try {
-        const opus = await Opus.findOne({_id: req.params.id})
-        res.status(200).json({opus: opus});
+        const opus = await Opus.findOne({ _id: req.params.id })
+        res.status(200).json({ opus: opus });
     } catch (error) {
-        res.json({data: error})
+        res.json({ data: error })
+    }
+}
+
+async function update(req, res) {
+    try {
+        const opus = await Opus.findOne({ _id: req.params.id })
+        opus.title = req.body.title;
+        opus.composer = req.body.composer;
+        opus.opusData = req.body.opusData;
+        opus.music = req.body.music;
+        await opus.save()
+        res.status(200).json({ opus: opus })
+    } catch (error) {
+        res.json({ data: error })
     }
 }
 
