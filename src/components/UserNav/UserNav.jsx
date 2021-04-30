@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Popup, Icon, Segment } from 'semantic-ui-react';
 import { useLocation, useHistory } from 'react-router-dom';
 import OpusSaveControls from '../../components/OpusSaveControls/OpusSaveControls';
 import './UserNav.css';
 
-export default function UserNav ({ user, isOpusEdit, changes, saveChanges}) {
+export default function UserNav ({ user, isOpusEdit, changes, saveChanges, ignoreChanges }) {
 
     const location = useLocation();
     const history = useHistory();
@@ -26,16 +26,18 @@ export default function UserNav ({ user, isOpusEdit, changes, saveChanges}) {
             switch (e.target.id) {
                 case 'home':
                     history.push('/')
-                break;
+                    break;
                 case 'user':
                     history.push(`/${user.username}`)
-                break;
+                    break;
                 case 'music':
                     history.push('/opera')
-                break;
+                    break;
                 case 'users':
                     history.push('/following')
-                break;
+                    break;
+                default:
+                    break;
             }
         }
     }
@@ -44,7 +46,7 @@ export default function UserNav ({ user, isOpusEdit, changes, saveChanges}) {
         <>
         {
             showSaveControls ?
-            <OpusSaveControls saveChanges={saveChanges} resetSaveControls={resetSaveControls} />
+            <OpusSaveControls saveChanges={saveChanges} resetSaveControls={resetSaveControls} ignoreChanges={ignoreChanges} />
             :
             <Segment textAlign="center">
                 <Popup

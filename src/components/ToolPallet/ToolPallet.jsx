@@ -1,5 +1,5 @@
 import React from 'react';
-import { Icon} from 'semantic-ui-react';
+import { Icon, Popup } from 'semantic-ui-react';
 import './ToolPallet.css';
 
 export default function ToolPallet ({ getTool, current }) {
@@ -10,13 +10,25 @@ export default function ToolPallet ({ getTool, current }) {
 
     return (
         <div className="pallet">
-            <div className="tool" onClick={handleToolClick}>
-                <Icon id="select" fitted="true" name="mouse pointer" 
-                    color={current === 'select' ? "red" : "black"} ></Icon>
-            </div>
-            <div className="tool" onClick={handleToolClick}>
-                <div id="qNote" style={{ color: current === 'qNote' ? "red" : "black"}} >♩</div>
-            </div>
+            <Popup
+                trigger={
+                    <div className="tool" onClick={handleToolClick}>
+                        <Icon id="select" fitted="true" name="mouse pointer" 
+                            color={current === 'select' ? "red" : "black"} ></Icon>
+                    </div>
+                }
+                content='Select'
+                position='left center'
+            />
+            <Popup
+                trigger={
+                    <div className="tool" onClick={handleToolClick}>
+                        <div id="qNote" style={{ color: current === 'qNote' ? "red" : "black"}} >♩</div>
+                    </div>
+                }
+                content='Quarter Note'
+                position='left center'
+            />
         </div>
     )
 }

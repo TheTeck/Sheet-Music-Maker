@@ -1,11 +1,9 @@
 import React, { useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import { Form, Segment, Button, Grid} from 'semantic-ui-react';
 import './NewOpusForm.css';
 
 export default function NewOpusForm ({ user, handleAddOpus }) {
 
-    const [error, setError ] = useState('')
     const [opus, setOpus] = useState({
         title: '',
         tempo: '120',
@@ -180,7 +178,6 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
                 </Form.Group>
                 <Button type="submit" color="red">OK</Button>
             </Segment>
-            {error ? <ErrorMessage error={error} /> : null}
         </Form>
     )
 }

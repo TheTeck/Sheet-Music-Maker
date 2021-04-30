@@ -4,6 +4,7 @@ import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import Opus from '../../components/Opus/Opus';
 import ToolPallet from '../../components/ToolPallet/ToolPallet';
+import { Icon, Popup } from 'semantic-ui-react';
 import * as opusApi from '../../utils/opus-api';
 import './OpusEdit.css';
 
@@ -21,7 +22,11 @@ export default function OpusEdit ({ user, handleLogout}) {
 
     function saveChanges() {
         updateOpus();
-        setChanges(false)
+        setChanges(false);
+    }
+
+    function ignoreChanges() {
+        setChanges(false);
     }
 
     function getUpdatedElement(element, value) {
@@ -57,13 +62,34 @@ export default function OpusEdit ({ user, handleLogout}) {
         <div>
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body"> 
-                <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} />
+                <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} ignoreChanges={ignoreChanges} />
                 <Opus 
                     opus={opus} 
                     makeChanges={makeChanges} 
                     getUpdatedElement={getUpdatedElement} 
                     current={currentTool} />
                 <ToolPallet getTool={getTool} current={currentTool} />
+                <>
+                {
+                    changes ? 
+                        <Popup
+                            trigger={
+                                <div className="save-container">
+                                    <Icon 
+                                        onClick={saveChanges}
+                                        className="save-icon" 
+                                        size="large" 
+                                        fitted="true" 
+                                        name="save">
+                                        </Icon>
+                                </div>
+                            }
+                            content='Save'
+                            position='top center'
+                        />
+                        : ''
+                }
+                </>
             </div>
         </div>
     )

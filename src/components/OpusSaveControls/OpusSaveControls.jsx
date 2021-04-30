@@ -2,11 +2,16 @@ import React from 'react';
 import { Popup, Icon, Segment, Header } from 'semantic-ui-react';
 import './OpusSaveControls.css';
 
-export default function OpusSaveControls ({ saveChanges, resetSaveControls }) {
+export default function OpusSaveControls ({ saveChanges, resetSaveControls, ignoreChanges }) {
 
     function handleSaveChanges() {
         resetSaveControls();
         saveChanges();
+    }
+
+    function handleIgnoreClick() {
+        resetSaveControls()
+        ignoreChanges();
     }
 
     return (
@@ -28,6 +33,7 @@ export default function OpusSaveControls ({ saveChanges, resetSaveControls }) {
             <Popup
                 trigger={
                     <Icon 
+                    onClick={handleIgnoreClick}
                         style={{ color: "red" }}
                         size='large' 
                         name='delete' 
