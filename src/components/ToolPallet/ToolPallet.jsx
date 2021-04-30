@@ -1,15 +1,21 @@
 import React from 'react';
-import { Segment, Grid, Icon} from 'semantic-ui-react';
+import { Icon} from 'semantic-ui-react';
 import './ToolPallet.css';
 
-export default function ToolPallet () {
+export default function ToolPallet ({ getTool, current }) {
+
+    function handleToolClick(e) {
+        getTool(e.target.id)
+    }
+
     return (
         <div className="pallet">
-            <div className="tool">
-                <Icon fitted="true" name="mouse pointer"></Icon>
+            <div className="tool" onClick={handleToolClick}>
+                <Icon id="select" fitted="true" name="mouse pointer" 
+                    color={current === 'select' ? "red" : "black"} ></Icon>
             </div>
-            <div className="tool">
-                <div>♩</div>
+            <div className="tool" onClick={handleToolClick}>
+                <div id="qNote" style={{ color: current === 'qNote' ? "red" : "black"}} >♩</div>
             </div>
         </div>
     )

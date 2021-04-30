@@ -3,3 +3,76 @@
     border-right: 1px solid black;
     float: left;
 }
+
+.inner-measure-container {
+    width: 100%;
+    height: 49px;
+    position: relative;
+}
+
+.hightlight {
+    
+}
+
+.F2 {
+    width: 100%;
+    position: absolute;
+    height: 7px;
+    top: -4px;
+}
+
+.E2 {
+    width: 100%;
+    position: absolute;
+    height: 5px;
+    top: 3px;
+}
+
+.D2 {
+    width: 100%;
+    position: absolute;
+    height: 7px;
+    top: 8px;
+}
+
+.C2 {
+    width: 100%;
+    position: absolute;
+    height: 5px;
+    top: 15px;
+}
+
+.B1 {
+    width: 100%;
+    position: absolute;
+    height: 7px;
+    top: 20px;
+}
+
+.A1 {
+    width: 100%;
+    position: absolute;
+    height: 5px;
+    top: 27px;
+}
+
+.G1 {
+    width: 100%;
+    position: absolute;
+    height: 7px;
+    top: 32px;
+}
+
+.F1 {
+    width: 100%;
+    position: absolute;
+    height: 5px;
+    top: 39px;
+}
+
+.E1 {
+    width: 100%;
+    position: absolute;
+    height: 7px;
+    top: 44px;
+}

@@ -6,7 +6,7 @@ import Staff from '../../components/Staff/Staff';
 import './Page.css';
 
 
-export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement }) {
+export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement, current }) {
 
     const [staves, setStaves] = useState(data.split('_s'));
 
@@ -31,8 +31,8 @@ export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedEl
                     return (
                         <>{
                         pageNumber === 0 && index === 0 ?
-                            <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={true} />
-                            : <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={false} />
+                            <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={true} current={current} />
+                            : <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={false} current={current} />
                         }</>
                 )})
             }

@@ -4,7 +4,7 @@ import KeySignature from '../../components/KeySignature/KeySignature';
 import TimeSignature from '../../components/TimeSignature/TimeSignature';
 import './Staff.css';
 
-export default function Staff({ data, keySignature, timeSignature, firstStaff }) {
+export default function Staff({ data, keySignature, timeSignature, firstStaff, current}) {
     
     const [measures, setMeasures] = useState(data.split('_m'));
     const [sigWidth, setSigWidth] = useState(0);
@@ -40,8 +40,8 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff })
                     measures.map((measure, index) => {
                         return (
                             <>{
-                                firstStaff ? <Measure key={index} data={measure} wth={181 - ((sigWidth+35)/measures.length)} />
-                                : <Measure key={index} data={measure} wth={181 - (sigWidth/measures.length)} />
+                                firstStaff ? <Measure key={index} data={measure} wth={181 - ((sigWidth+35)/measures.length)} current={current} />
+                                : <Measure key={index} data={measure} wth={181 - (sigWidth/measures.length)} current={current} />
                             }</>
                         )
                     })

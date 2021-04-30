@@ -74,20 +74,17 @@ export default function KeySignature ({ keySig, getSigWidth }) {
         getSigWidth(66)
     } else if ( (keySig[0] === 'F' && keySig[1] === 'natural' && keySig[2] === 'major') ||
         (keySig[0] === 'D' && keySig[1] === 'natural' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                 </div>
     } else if ( (keySig[0] === 'B' && keySig[1] === 'flat' && keySig[2] === 'major') ||
         (keySig[0] === 'G' && keySig[1] === 'natural' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                     <div className="flat-2">♭</div>
                 </div>
     } else if ( (keySig[0] === 'E' && keySig[1] === 'flat' && keySig[2] === 'major') ||
         (keySig[0] === 'C' && keySig[1] === 'natural' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                     <div className="flat-2">♭</div>
@@ -95,7 +92,6 @@ export default function KeySignature ({ keySig, getSigWidth }) {
                 </div>
     } else if ( (keySig[0] === 'A' && keySig[1] === 'flat' && keySig[2] === 'major') ||
         (keySig[0] === 'F' && keySig[1] === 'natural' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                     <div className="flat-2">♭</div>
@@ -104,7 +100,6 @@ export default function KeySignature ({ keySig, getSigWidth }) {
                 </div>
     } else if ( (keySig[0] === 'D' && keySig[1] === 'flat' && keySig[2] === 'major') ||
         (keySig[0] === 'B' && keySig[1] === 'flat' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                     <div className="flat-2">♭</div>
@@ -114,7 +109,6 @@ export default function KeySignature ({ keySig, getSigWidth }) {
                 </div>
     } else if ( (keySig[0] === 'G' && keySig[1] === 'flat' && keySig[2] === 'major') ||
         (keySig[0] === 'E' && keySig[1] === 'flat' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                     <div className="flat-2">♭</div>
@@ -125,7 +119,6 @@ export default function KeySignature ({ keySig, getSigWidth }) {
                 </div>
     } else if ( (keySig[0] === 'C' && keySig[1] === 'flat' && keySig[2] === 'major') ||
         (keySig[0] === 'A' && keySig[1] === 'flat' && keySig[2] === 'minor')) {
-            console.log('okay')
         output = <div className="signature">
                     <div className="flat-1">♭</div>
                     <div className="flat-2">♭</div>
