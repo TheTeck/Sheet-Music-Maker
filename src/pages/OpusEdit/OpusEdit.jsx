@@ -34,12 +34,20 @@ export default function OpusEdit ({ user, handleLogout}) {
         setCurrentTool(tool);
     }
 
+    useEffect(() => {
+        console.log(opus)
+    })
+
     return (
         <div>
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body"> 
                 <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} />
-                <Opus opus={opus} makeChanges={makeChanges} getUpdatedElement={getUpdatedElement} current={currentTool} />
+                <Opus 
+                    opus={opus} 
+                    makeChanges={makeChanges} 
+                    getUpdatedElement={getUpdatedElement} 
+                    current={currentTool} />
                 <ToolPallet getTool={getTool} current={currentTool} />
             </div>
         </div>

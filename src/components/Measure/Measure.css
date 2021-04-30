@@ -72,3 +72,8 @@
     height: 7px;
     top: 44px;
 }
+
+.E1:hover, .F1:hover, .G1:hover, .A1:hover, .B1:hover,
+.C2:hover, .D2:hover, .E2:hover, .F2:hover {
+    background-color: rgba(253, 92, 92, 0.258);
+}

@@ -6,11 +6,17 @@ import Staff from '../../components/Staff/Staff';
 import './Page.css';
 
 
-export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement, current }) {
+export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement, updateMusic, current }) {
 
     const [staves, setStaves] = useState(data.split('_s'));
 
-    console.log(staves)
+    function updateStaff(staff, num) {
+        let temp = [...staves];
+        temp[num] = staff;
+        updateMusic(temp.join('_s'), pageNumber);
+        setStaves([...temp]);
+    }
+
     return (
         <>
             <>
@@ -29,11 +35,14 @@ export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedEl
             {
                 staves.map((staff, index) => {
                     return (
-                        <>{
-                        pageNumber === 0 && index === 0 ?
-                            <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={true} current={current} />
-                            : <Staff key={index} data={staff} keySignature={opus.keySignature} timeSignature={opus.timeSignature} firstStaff={false} current={current} />
-                        }</>
+                        <Staff key={index}
+                            data={staff}
+                            keySignature={opus.keySignature}
+                            timeSignature={opus.timeSignature}
+                            firstStaff={ pageNumber === 0 && index === 0 ? true : false }
+                            updateStaff={updateStaff}
+                            num={index}
+                            current={current} />     
                 )})
             }
             </div>

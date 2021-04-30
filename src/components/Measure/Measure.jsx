@@ -14,11 +14,8 @@ export default function Measure({ data, wth, current, updateMeasure, timeSig, nu
 
     function handleStaffClick (e) {
         if (current === 'qNote' && notes.length < timeSig[0]) {
-            let measureStr = "";
-            notes.forEach(note => {
-                measureStr += note ? (note + '.') : "";
-            })
-            measureStr += ('q,' + e.target.id);
+            let measureStr = notes.join('.');
+            measureStr += measureStr === '' ? ('q,' + e.target.id) : ('.q,' + e.target.id);
             updateMeasure(measureStr, num)
             setNotes([
                 ...notes,

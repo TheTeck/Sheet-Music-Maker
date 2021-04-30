@@ -4,7 +4,7 @@ import KeySignature from '../../components/KeySignature/KeySignature';
 import TimeSignature from '../../components/TimeSignature/TimeSignature';
 import './Staff.css';
 
-export default function Staff({ data, keySignature, timeSignature, firstStaff, current}) {
+export default function Staff({ data, keySignature, timeSignature, firstStaff, current, updateStaff, num }) {
     
     const [measures, setMeasures] = useState(data.split('_m'));
     const [sigWidth, setSigWidth] = useState(0);
@@ -14,9 +14,9 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff, c
     }
 
     function updateMeasure (notes, measure) {
-        console.log(notes, measure)
         let temp = [...measures];
         temp[measure] = notes;
+        updateStaff(temp.join('_m'), num);
         setMeasures([...temp]);
     }
 
@@ -44,24 +44,14 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff, c
                 {
                     measures.map((measure, index) => {
                         return (
-                            <>{
-                                firstStaff ? <Measure 
-                                    key={index} 
-                                    data={measure} 
-                                    wth={181 - ((sigWidth+35)/measures.length)} 
-                                    current={current} 
-                                    num={index}
-                                    timeSig={timeSignature} 
-                                    updateMeasure={updateMeasure} />
-                                : <Measure 
-                                    key={index} 
-                                    data={measure} 
-                                    wth={181 - (sigWidth/measures.length)} 
-                                    current={current} 
-                                    num={index} 
-                                    timeSig={timeSignature} 
-                                    updateMeasure={updateMeasure} />
-                            }</>
+                            <Measure 
+                                key={index} 
+                                data={measure} 
+                                wth={ firstStaff ? 181 - ((sigWidth+35)/measures.length) : 181 - (sigWidth/measures.length) } 
+                                current={current} 
+                                num={index}
+                                timeSig={timeSignature} 
+                                updateMeasure={updateMeasure} />
                         )
                     })
                 }
