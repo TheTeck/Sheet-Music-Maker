@@ -29,7 +29,7 @@ export default function Title({ opusTitle, getUpdatedElement }) {
       {isSettingTitle ? (
         <form onSubmit={handleSubmit}>
           <div style={{ height: '64px' }}>
-            <input type="text" value={title} onChange={handleChange} />
+            <input type="text" style={{ fontSize: '50px'}}value={title} onChange={handleChange} />
           </div>
         </form>
       ) : (
