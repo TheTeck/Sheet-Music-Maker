@@ -1,6 +1,7 @@
 .page-header {
     position: absolute;
     top: 0;
-    display: flex;
-    align-items: center;
+    background-image: url('../../public/sheetmusic.jpg');
+    background-size: cover;
+    z-index: 3;
 }

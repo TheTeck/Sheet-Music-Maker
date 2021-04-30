@@ -50,8 +50,10 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                 <UserNav user={user} />
                 <Segment padded="very">
                     <Grid columns={2}>
-                        <Grid.Column textAlign='center'>
-                            <Image src={`${user.photoUrl}`} size='large' rounded/>
+                        <Grid.Column>
+                            <div className="image-container">
+                              <Image src={`${user.photoUrl}`} size='large' rounded/>
+                            </div>
                         </Grid.Column>
 
                         <Grid.Column textAlign='center'>
@@ -59,7 +61,7 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                             <p>Composer: <strong>{user.firstname} {user.lastname}</strong></p>
                             <Divider horizontal>My Bio:</Divider>
                             <p><strong>{user.bio ? user.bio : 'There is no bio, yet.'}</strong></p>
-                            <Button onClick={handleEditClick}>Edit Profile</Button>
+                            <Button onClick={handleEditClick} color="youtube">Edit Profile</Button>
                         </Grid.Column>
                     </Grid>
                 </Segment>
@@ -89,6 +91,7 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                                 onChange={handleChange}
                                 />
                                 <Button
+                                color="youtube"
                                 type="submit"
                                 className="btn"
                                 >

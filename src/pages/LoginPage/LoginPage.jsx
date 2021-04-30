@@ -39,14 +39,14 @@ export default function LoginPage(props){
     }
 
     return (
-        <>
+        <div className="full-screen-container">
           <Grid textAlign='center' style={{ height: '100vh' }} verticalAlign='middle'>
             <Grid.Column style={{ maxWidth: 450 }}>
-            <Header as='h2' color='teal' textAlign='center'>
+            <Header as='h2' style={{ color: 'white' }} textAlign='center'>
                 Sheet Music Maker
             </Header>
             <Form  autoComplete="off"  onSubmit={handleSubmit}>
-               <Segment stacked>
+               <Segment style={{ backgroundColor: 'rgba(200,200,200,.6)'}} stacked>
                   <Form.Input
                     type="email"
                     name="email"
@@ -64,7 +64,7 @@ export default function LoginPage(props){
                     required
                   />
                 <Button
-                  color='teal'
+                  color='youtube'
                   fluid size='large'
                   type="submit"
                   className="btn"
@@ -79,6 +79,8 @@ export default function LoginPage(props){
             {error ? <ErrorMessage error={error} /> : null}
             </Grid.Column>
           </Grid>
-        </>
+          <div className="bg-top-container"><div className="inner-gradient-container"></div></div>
+          <div className="bg-bottom-container"></div>
+        </div>
       );
 }

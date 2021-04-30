@@ -2,14 +2,21 @@
     width: 70%;
     min-width: 1000px;
     height: 100vh;
-    background-color: rgba(240,240,240,.8);
+    background-color: rgba(240,240,240,.6);
     margin: 0 auto;
 }
 
 .page-container {
     position: relative;
+    background-color: black;
 }
 
 p {
     margin-bottom: 40px;
+}
+
+
+.image-container {
+    display: flex;
+    justify-content: center;
 }
