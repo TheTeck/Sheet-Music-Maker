@@ -9,7 +9,7 @@ export default function Opus({ opus, makeChanges, getUpdatedElement, current}) {
 
   return (
     <div className="page">
-      <Page pageNumber={pageNumber} data={data[pageNumber]} opus={opus} makeChanges={makeChanges} getUpdatedElement={getUpdatedElement, current={current} } />
+      <Page pageNumber={pageNumber} data={data[pageNumber]} opus={opus} makeChanges={makeChanges} getUpdatedElement={getUpdatedElement} current={current} />
     </div>
   );
 }

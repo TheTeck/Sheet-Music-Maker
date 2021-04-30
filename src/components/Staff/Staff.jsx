@@ -13,7 +13,12 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff, c
         setSigWidth(width);
     }
 
-    console.log(sigWidth)
+    function updateMeasure (notes, measure) {
+        console.log(notes, measure)
+        let temp = [...measures];
+        temp[measure] = notes;
+        setMeasures([...temp]);
+    }
 
     return (
         <div className="staff-outline">
@@ -40,8 +45,22 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff, c
                     measures.map((measure, index) => {
                         return (
                             <>{
-                                firstStaff ? <Measure key={index} data={measure} wth={181 - ((sigWidth+35)/measures.length)} current={current} />
-                                : <Measure key={index} data={measure} wth={181 - (sigWidth/measures.length)} current={current} />
+                                firstStaff ? <Measure 
+                                    key={index} 
+                                    data={measure} 
+                                    wth={181 - ((sigWidth+35)/measures.length)} 
+                                    current={current} 
+                                    num={index}
+                                    timeSig={timeSignature} 
+                                    updateMeasure={updateMeasure} />
+                                : <Measure 
+                                    key={index} 
+                                    data={measure} 
+                                    wth={181 - (sigWidth/measures.length)} 
+                                    current={current} 
+                                    num={index} 
+                                    timeSig={timeSignature} 
+                                    updateMeasure={updateMeasure} />
                             }</>
                         )
                     })

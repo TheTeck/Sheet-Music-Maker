@@ -106,7 +106,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
             tempo: opus.tempo,
             timeSignature: [opus.timeBeat, opus.timeDuration],
             keySignature: [opus.key, opus.accidental, opus.mode],
-            music: "181_w_m181_w_m181_w_m181_w_s181_w_m181_w_m181_w_m181_w_s181_w_m181_w_m181_w_m181_w_s181_w_m181_w_m181_w_m181_w_s181_w_m181_w_m181_w_m181_w"
+            music: "_m_m_m_s_m_m_m_s_m_m_m_s_m_m_m_s_m_m_m_s_m_m_m"
         };
         
         handleAddOpus(formattedOpus);
