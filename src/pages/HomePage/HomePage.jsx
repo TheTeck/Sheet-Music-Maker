@@ -1,10 +1,41 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
-import { Grid, Header, Divider } from 'semantic-ui-react';
+import { Grid, Header, Divider, Icon } from 'semantic-ui-react';
+import * as opusApi from '../../utils/opus-api';
+import userService from '../../utils/userService';
 import "./HomePage.css";
 
 export default function HomePage({ user, handleLogout }) {
+
+    const [operaCount, setOperaCount] = useState(0);
+    const [userCount, setUserCount] = useState(0);
+
+    async function getAllOpera() {
+        try {
+            const opera = await opusApi.getAll();
+            setOperaCount(opera.opera.length)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    async function getAllUsers() {
+        try {
+            const users = await userService.getAll();
+            console.log(users)
+            setUserCount(users.length);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        getAllOpera();
+        getAllUsers();
+    }, [])
+
     return (
         <div className="page-container">
             <PageHeader user={user} handleLogout={handleLogout} />
@@ -32,6 +63,10 @@ export default function HomePage({ user, handleLogout }) {
                         </Grid.Column>
                     </Grid.Row>
                 </Grid>
+                <Divider></Divider>
+                <h2>There are<span style={{ color: "red" }}>{operaCount === 1 ? <p>{operaCount}</p> : <p>0</p>}</span>musical works to explore!</h2>
+                <Icon style={{ color: 'red' }} name="users" size="huge"></Icon>
+                <h3>Check out any of the <span style={{ color: "red" }}>{userCount}</span> composers in the community <Link to="/following">here</Link>.</h3>
             </div>
         </div>
     )
