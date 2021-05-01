@@ -13,12 +13,12 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
     const [otherUsers, setOtherUsers] = useState([]);
     const [friendsUpdated, setFriendsUpdated] = useState(false)
         const [state, setState]  = useState({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        email: user.email,
-        bio: user.bio,
-        friends: user.friends
-      });
+            firstname: user.firstname,
+            lastname: user.lastname,
+            email: user.email,
+            bio: user.bio,
+            friends: user.friends
+        });
 
 
     async function getAllUsers() {
@@ -26,7 +26,8 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             const users = await userService.getAll();
             const userIdx = users.findIndex(aUser => aUser.username === user.username)
             users.splice(userIdx, 1);
-            setOtherUsers([...users]);
+            const userIds = users.map(user => user._id)
+            setOtherUsers([...userIds]);
         } catch (error) {
             console.log(error);
         }
@@ -79,9 +80,9 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body">
                 <UserNav user={user} />
-                <Button onClick={handleFindClick}>Add Friends</Button>
+                <Button onClick={handleFindClick} color="youtube">Add Friends</Button>
                 <Divider />
-                <UserIndex isID={true} otherUsers={user.friends} handleUserClick={handleFriendClick} />
+                <UserIndex otherUsers={user.friends} handleUserClick={handleFriendClick} />
             </div>
 
             <Modal
@@ -91,7 +92,7 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
                 open={modalActive}
                 >
                 <Modal.Header>Find Friends to Follow</Modal.Header>
-                <UserIndex isID={false} otherUsers={otherUsers} handleUserClick={handleAddFriend} />
+                <UserIndex otherUsers={otherUsers} handleUserClick={handleAddFriend} />
             </Modal>
         </div>
     )

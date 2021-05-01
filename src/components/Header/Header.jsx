@@ -6,6 +6,7 @@ import './Header.css';
 
 export default function PageHeader({user, handleLogout}){
     return (
+        <div style={{ width: '100%', paddingBottom: '20px' }}>
         <Segment vetical='true' style={{ color: 'grey' }} className="page-header" clearing>
             <Header as='h2' floated='right'>
                 <Link style={{ color: 'black' }} to=""><span style={{ color: 'red' }}>Hi</span>, {user.firstname}!</Link>
@@ -16,6 +17,6 @@ export default function PageHeader({user, handleLogout}){
             <Header floated='left' className='site-name' as='h1'>
                 Sheet <span style={{ color: "red" }}>Music</span> Maker
             </Header>
-        </Segment>
+        </Segment></div>
     )
 }

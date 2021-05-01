@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { Card, Image, Grid, Header, Divider } from 'semantic-ui-react';
+import { Card, Header, Divider } from 'semantic-ui-react';
 import userService from '../../utils/userService';
+import * as operaApi from '../../utils/opus-api';
 import './UserCard.css';
 
-export default function UserCard ({ otherUser, handleUserClick, isID}) {
+export default function UserCard ({ otherUser, handleUserClick }) {
 
     const [theUser, setTheUser] = useState({...otherUser});
+    const [userOpera, setUserOpera] = useState([]);
 
     function handleCardClick() {
         handleUserClick(otherUser)
@@ -14,32 +16,38 @@ export default function UserCard ({ otherUser, handleUserClick, isID}) {
     async function getUserData() {
         try {
             const user = await userService.getOneUserById(otherUser)
+            console.log()
             setTheUser({ ...user })
         } catch (error) {
             console.log(error)
         }
     }
 
+    async function getUserOpera() {
+        try {
+            const allOpera = await operaApi.getAll();
+            const thisUserOpera = allOpera.opera.filter(opus => opus.user === otherUser)
+            setUserOpera(thisUserOpera);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     useEffect(() => {
-        if (isID) {
-            getUserData()
-        }  
+        getUserData()
+        getUserOpera()
     }, []);
 
     return (
-        <Card onClick={handleCardClick} fluid>
-            <Grid columns="2">
-                <Grid.Column width="four">
-                    <Image rounded src={theUser.photoUrl} size='small'/>
-                </Grid.Column>
-                <Grid.Column verticalAlign="middle">
-                <div className="inner-padding">
-                    <Header as="h4">{theUser.firstname} {theUser.lastname}</Header>
-                    <Divider></Divider>
-                    <Header as="h4">{theUser.bio}</Header>
-                </div>
-                </Grid.Column>
-            </Grid>
+        <Card style={{ width: '300px'}} onClick={handleCardClick}>
+            <img className="user-card-img" src={theUser.photoUrl} />
+ 
+            <div className="inner-padding">
+                <Header as="h3">{theUser.firstname} {theUser.lastname}</Header>
+                <Divider></Divider>
+                <Header as="h3"><span style={{ color: 'red' }}>{userOpera.length}</span> Musical Works</Header>
+            </div>
+                
         </Card>
     )
 }

@@ -1,6 +1,7 @@
 .card-container-outer {
     width: 255px;
     margin: 15px;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.498);
 }
 
 .card-container-inner {
@@ -16,5 +17,5 @@
 }
 
 .card-container-outer:hover {
-    box-shadow: 0 5px 10px rgba(10, 10, 10, 0.382);
+    box-shadow: 0 5px 20px rgba(10, 10, 10, 0.74);
 }
