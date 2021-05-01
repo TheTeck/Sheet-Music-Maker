@@ -56,7 +56,8 @@ export default function OpusIndexPage({ user, handleLogout }) {
     async function getOpera() {
         try {
             const data = await operaApi.getAll();
-            setOpera([...data.opera])
+            const userOpera = data.opera.filter(opus => opus.user === user._id)
+            setOpera([...userOpera])
           } catch(err){
             console.log(err, ' this is the error')
           }
@@ -88,7 +89,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     </Grid.Column>
                     <Grid.Column>
                         <Header style={{ padding: '10px' }} floated='right' as='h3'>
-                            You have {opera.length} 
+                            You have <span style={{ color: 'red' }}>{opera.length}</span> 
                             {opera.length === 1 ? ' file': ' files'}
                         </Header>
                     </Grid.Column>

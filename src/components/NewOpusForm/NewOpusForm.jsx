@@ -24,11 +24,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
     ]
 
     const durationOptions = [
-        { key: '2', text: '2', value: '2' },
-        { key: '4', text: '4', value: '4' },
-        { key: '6', text: '6', value: '6' },
-        { key: '8', text: '8', value: '8' },
-        { key: '12', text: '12', value: '12' }
+        { key: '4', text: '4', value: '4' }
     ]
 
     const keyOptions = [

@@ -24,7 +24,6 @@ export default function HomePage({ user, handleLogout }) {
     async function getAllUsers() {
         try {
             const users = await userService.getAll();
-            console.log(users)
             setUserCount(users.length);
         } catch (error) {
             console.log(error)
@@ -64,7 +63,7 @@ export default function HomePage({ user, handleLogout }) {
                     </Grid.Row>
                 </Grid>
                 <Divider></Divider>
-                <h2>There are<span style={{ color: "red" }}>{operaCount === 1 ? <p>{operaCount}</p> : <p>0</p>}</span>musical works to explore!</h2>
+                <h2>There are<span style={{ color: "red" }}><p>{operaCount}</p></span>musical works to explore!</h2>
                 <Icon style={{ color: 'red' }} name="users" size="huge"></Icon>
                 <h3>Check out any of the <span style={{ color: "red" }}>{userCount}</span> composers in the community <Link to="/following">here</Link>.</h3>
             </div>

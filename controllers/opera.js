@@ -56,7 +56,7 @@ async function create(req, res) {
 
 async function index(req, res){
     try {
-        const opera = await Opus.find({user: req.user._id}) 
+        const opera = await Opus.find({}) 
         res.status(200).json({opera})
     } catch(err){
         res.json(err)
