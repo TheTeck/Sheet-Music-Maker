@@ -9,3 +9,17 @@
 .page-container {
     position: relative;
 }
+
+.welcome-image {
+    width: 100%;
+    height: 400px;
+    background-image: url('../../public/sheetmusic.jpg');
+    background-size: cover;
+}
+
+.welcome-image2 {
+    width: 100%;
+    height: 400px;
+    background-image: url('../../public/sheetmusic.jpg');
+    background-size: cover;
+}
