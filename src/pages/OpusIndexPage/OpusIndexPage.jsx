@@ -8,7 +8,6 @@ import NewOpusForm from '../../components/NewOpusForm/NewOpusForm';
 import * as operaApi from '../../utils/opus-api';
 import { Grid, Header, Modal } from 'semantic-ui-react';
 import './OpusIndexPage.css';
-import { Redirect } from 'react-router';
 
 export default function OpusIndexPage({ user, handleLogout }) {
 
@@ -95,7 +94,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     </Grid.Column>
                 </Grid>
 
-                <OpusIndex user={user} opera={opera} editOpus={editOpus} />
+                <OpusIndex user={user} opera={opera} editOpus={editOpus} isUser={true} />
                 
                 <Modal
                     dimmer='blurring'
@@ -114,7 +113,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     open={deleteOpus}
                     >
                     <Modal.Header>Select A Work To Delete</Modal.Header>
-                    <OpusIndex user={user} opera={opera} deleteOpus={deleteOpus} removeOpus={removeOpus} />
+                    <OpusIndex user={user} opera={opera} deleteOpus={deleteOpus} removeOpus={removeOpus} isUser={true} />
                 </Modal>
             </div>
         </div>

@@ -2,7 +2,7 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import './OpusCard.css';
 
-export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus}) {
+export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus, isUser}) {
 
     function handleDeleteClick() {
         removeOpus(opus._id)
@@ -14,35 +14,53 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus}) {
 
     return (
         <div className="card-container-outer">
-            <Card fluid >
-                {
-                deleteOpus ? 
-                    <div className="card-container-inner" onClick={handleDeleteClick}>
-                        <Card.Content>
-                            <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
-                            <Card.Content vertical="true">
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
+            {
+                isUser ?
+                    <Card fluid >
+                        {
+                        deleteOpus ? 
+                            <div className="card-container-inner" onClick={handleDeleteClick}>
+                                <Card.Content>
+                                    <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
+                                    <Card.Content vertical="true">
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                    </Card.Content>
+                                </Card.Content>
+                            </div>
+                        :   <div onClick={handleEditClick} className="card-container-inner">
+                                <Card.Content>
+                                    <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
+                                    <Card.Content vertical="true">
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                        <div className="music-placeholder"></div>
+                                    </Card.Content>
+                                </Card.Content>
+                            </div>
+                        }
+                    </Card>
+                    :
+                    <Card fluid >
+                        <div className="card-container-inner">
+                            <Card.Content>
+                                <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
+                                <Card.Content vertical="true">
+                                    <div className="music-placeholder"></div>
+                                    <div className="music-placeholder"></div>
+                                    <div className="music-placeholder"></div>
+                                    <div className="music-placeholder"></div>
+                                    <div className="music-placeholder"></div>
+                                </Card.Content>
                             </Card.Content>
-                        </Card.Content>
-                    </div>
-                :   <div onClick={handleEditClick} className="card-container-inner">
-                        <Card.Content>
-                            <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
-                            <Card.Content vertical="true">
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                                <div className="music-placeholder"></div>
-                            </Card.Content>
-                        </Card.Content>
-                    </div>
-                }
-            </Card>
+                        </div>
+                    </Card>
+            }
         </div>
     )
 }

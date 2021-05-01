@@ -3,13 +3,18 @@ import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import UserIndex from '../../components/UserIndex/UserIndex';
+import OpusIndex from '../../components/OpusIndex/OpusIndex';
 import userService from '../../utils/userService';
+import * as opusApi from '../../utils/opus-api';
 import { Button, Divider, Modal } from 'semantic-ui-react';
 import './Friends.css'
 
 export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin }) {
 
     const [modalActive, setModalActive] = useState(false);
+    const [userOperaModalActive, setUserOperaModalActive] = useState(false);
+    const [activeFriend, setActiveFriend] = useState('');
+    const [activeFriendOpera, setActiveFriendOpera] = useState([]);
     const [otherUsers, setOtherUsers] = useState([]);
     const [friendsUpdated, setFriendsUpdated] = useState(false)
         const [state, setState]  = useState({
@@ -46,9 +51,28 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
         setModalActive(false);
     }
 
+    async function getActiveFriendOpus(friend) {
+        try {
+            const allOpera = await opusApi.getAll();
+            const friendOpera = allOpera.opera.filter(opus => opus.user === friend);
+            setActiveFriendOpera(friendOpera)
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
     function handleFriendClick(friend) {
-        // Does nothing for now
-        console.log(friend)
+        setActiveFriend(friend);
+        getActiveFriendOpus(friend);
+        handleOperaIndexModalOpen();
+    }
+
+    function handleOperaIndexModalOpen() {
+        setUserOperaModalActive(true)
+    }
+
+    function handleOperaIndexModalClose() {
+        setUserOperaModalActive(false)
     }
 
     async function updateUser() {
@@ -93,6 +117,16 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
                 >
                 <Modal.Header>Find Friends to Follow</Modal.Header>
                 <UserIndex otherUsers={otherUsers} handleUserClick={handleAddFriend} />
+            </Modal>
+
+            <Modal
+                dimmer='blurring'
+                onClose={handleOperaIndexModalClose}
+                onOpen={handleOperaIndexModalOpen}
+                open={userOperaModalActive}
+                >
+                <Modal.Header>View Their Works</Modal.Header>
+                <OpusIndex user={user} opera={activeFriendOpera} isUser={false}/>
             </Modal>
         </div>
     )
