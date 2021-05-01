@@ -13,13 +13,15 @@
 .welcome-image {
     width: 100%;
     height: 400px;
-    background-image: url('../../public/sheetmusic.jpg');
+    background-image: url('../../public/sheetmusic2.jpg');
     background-size: cover;
+    background-position: center;
 }
 
 .welcome-image2 {
     width: 100%;
     height: 400px;
-    background-image: url('../../public/sheetmusic.jpg');
+    background-image: url('../../public/sheetmusic3.jpg');
     background-size: cover;
+    background-position: center;
 }
