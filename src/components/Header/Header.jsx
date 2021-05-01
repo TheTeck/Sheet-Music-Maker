@@ -8,13 +8,13 @@ export default function PageHeader({user, handleLogout}){
     return (
         <Segment vetical='true' style={{ color: 'grey' }} className="page-header" clearing>
             <Header as='h2' floated='right'>
-                <Link style={{ color: 'black' }} to="">Hi, {user.firstname}!</Link>
+                <Link style={{ color: 'black' }} to=""><span style={{ color: 'red' }}>Hi</span>, {user.firstname}!</Link>
             </Header>
             <Header as='h2' floated='right'>
                 <Link style={{ color: 'black' }} to="" onClick={handleLogout}>Logout</Link>
             </Header>
             <Header floated='left' className='site-name' as='h1'>
-                Sheet Music Maker
+                Sheet <span style={{ color: "red" }}>Music</span> Maker
             </Header>
         </Segment>
     )

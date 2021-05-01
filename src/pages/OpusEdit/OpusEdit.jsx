@@ -59,7 +59,7 @@ export default function OpusEdit ({ user, handleLogout}) {
     }
 
     return (
-        <div>
+        <div className="page-container">
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body"> 
                 <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} ignoreChanges={ignoreChanges} />
