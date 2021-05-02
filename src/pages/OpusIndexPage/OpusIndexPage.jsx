@@ -65,7 +65,7 @@ export default function OpusIndexPage({ user, handleLogout }) {
 
     async function handleAddOpus(opus) {
         try {
-            const data = await operaApi.create(opus);
+            await operaApi.create(opus);
             setActive(false);
             getOpera()
         } catch (error) {

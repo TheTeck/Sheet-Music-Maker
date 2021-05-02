@@ -40,7 +40,7 @@ export default function UserCard ({ otherUser, handleUserClick }) {
 
     return (
         <Card style={{ width: '300px'}} onClick={handleCardClick}>
-            <img className="user-card-img" src={theUser.photoUrl} />
+            <img className="user-card-img" src={theUser.photoUrl} alt="User Avatar" />
  
             <div className="inner-padding">
                 <Header as="h3">{theUser.firstname} {theUser.lastname}</Header>

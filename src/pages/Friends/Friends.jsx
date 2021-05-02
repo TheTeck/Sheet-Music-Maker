@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
@@ -14,7 +14,6 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
     const history = useHistory();
     const [modalActive, setModalActive] = useState(false);
     const [userOperaModalActive, setUserOperaModalActive] = useState(false);
-    const [activeFriend, setActiveFriend] = useState('');
     const [activeFriendOpera, setActiveFriendOpera] = useState([]);
     const [otherUsers, setOtherUsers] = useState([]);
     const [friendsUpdated, setFriendsUpdated] = useState(false)
@@ -32,7 +31,8 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             const userIdx = users.findIndex(aUser => aUser.username === user.username)
             users.splice(userIdx, 1);
             const userIds = users.map(user => user._id)
-            setOtherUsers([...userIds]);
+            const nonFriends = userIds.filter(thisUser => !user.friends.includes(thisUser))
+            setOtherUsers([...nonFriends]);
         } catch (error) {
             console.log(error);
         }
@@ -62,7 +62,6 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
     }
 
     function handleFriendClick(friend) {
-        setActiveFriend(friend);
         getActiveFriendOpus(friend);
         handleOperaIndexModalOpen();
     }

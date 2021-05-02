@@ -16,6 +16,7 @@
     background-image: url('../../public/sheetmusic2.jpg');
     background-size: cover;
     background-position: center;
+    box-shadow: inset 90px 0 100px black;
 }
 
 .welcome-image2 {
@@ -24,4 +25,5 @@
     background-image: url('../../public/sheetmusic3.jpg');
     background-size: cover;
     background-position: center;
+    box-shadow: inset -90px 0 100px black;
 }
