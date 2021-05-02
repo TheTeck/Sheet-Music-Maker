@@ -24,7 +24,20 @@ Here is the link for
 ---
 ---
 ## Technologies Used  
-Javascript, HTML, CSS, React, Semantic UI, Node.js, Express.js and MongoDB  
+* Frontend
+  * Javascript
+  * HTML
+  * CSS
+  * React
+  * Semantic UI
+* Backend
+  * Node.js
+  * Express.js
+  * MongoDB/Mongoose.js
+* Services
+  * AWS
+  * Atlas
+  * Heroku
 
 ---
 ---
