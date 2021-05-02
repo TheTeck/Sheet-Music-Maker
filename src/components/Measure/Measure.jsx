@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Note from '../../components/Note/Note';
 import './Measure.css';
 
@@ -6,9 +6,19 @@ export default function Measure({ data, wth, current, updateMeasure, timeSig, nu
 
     const [notes, setNotes] = useState(data === "" ? [] : data.split('.'))
 
+    function getNoteClick(index) {
+        if (current === 'erase') {
+            let temp = notes;
+            temp.splice(index, 1);
+            const measureStr = temp.join('.')
+            updateMeasure(measureStr, num);
+            setNotes(temp)
+        }
+    }
+
     const output = notes.map((note, index) => {
         return (
-            <Note key={index} data={note} order={index} wth={wth} timeSig={timeSig} />
+            <Note key={Math.floor(Math.random() * 10000)} data={note} order={index} wth={wth} timeSig={timeSig} getNoteClick={getNoteClick} />
         )
     })
 

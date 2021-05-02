@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import './Note.css';
 
-export default function Note ({ data, order, wth, timeSig }) {
+export default function Note ({ data, order, wth, timeSig, getNoteClick }) {
 
     const [duration, setDuration] = useState(data.split(',')[0]);
     const [pitch, setPitch] = useState(data.split(',')[1]);
+
+    function handleNoteClick() {
+        getNoteClick(order)
+    }
 
     let symbol;
 
@@ -30,7 +34,7 @@ export default function Note ({ data, order, wth, timeSig }) {
     }
 
     return (
-        <div className="note-container" style={{ width: `${wth/timeSig[0]}px`, left: `${(wth/timeSig[0])*order}px` }}>
+        <div className="note-container" onClick={handleNoteClick} style={{ width: `${wth/timeSig[0]}px`, left: `${(wth/timeSig[0])*order}px` }}>
             {symbol}
         </div>
     )

@@ -10,16 +10,7 @@ export default function ToolPallet ({ getTool, current }) {
 
     return (
         <div className="pallet">
-            <Popup
-                trigger={
-                    <div className="tool" onClick={handleToolClick}>
-                        <Icon id="select" fitted="true" name="mouse pointer" 
-                            color={current === 'select' ? "red" : "black"} ></Icon>
-                    </div>
-                }
-                content='Select'
-                position='left center'
-            />
+            
             <Popup
                 trigger={
                     <div className="tool" onClick={handleToolClick}>
@@ -27,6 +18,16 @@ export default function ToolPallet ({ getTool, current }) {
                     </div>
                 }
                 content='Quarter Note'
+                position='left center'
+            />
+            <Popup
+                trigger={
+                    <div className="tool" onClick={handleToolClick}>
+                        <Icon id="erase" fitted="true" name="erase" 
+                            color={current === 'erase' ? "red" : "black"} ></Icon>
+                    </div>
+                }
+                content='Erase'
                 position='left center'
             />
         </div>

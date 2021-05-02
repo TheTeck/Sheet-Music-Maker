@@ -13,7 +13,7 @@ export default function OpusEdit ({ user, handleLogout}) {
     const location = useLocation();
     const [opus, setOpus] = useState(location.state.opus);
     const [changes, setChanges] = useState(false);
-    const [currentTool, setCurrentTool] = useState('select');
+    const [currentTool, setCurrentTool] = useState('qNote');
 
     // Pass down to all components to indicate if a change has been made on the page
     function makeChanges() {
