@@ -1,39 +1,61 @@
-## Setup 
+# Sheet Music Maker
+## Table Contents  
+* [Overview](#overview)
+* [Getting Started](#getting-started)
+* [Technologies Used](#technologies-used)
+* [Screenshots](#screenshots)
+* [Development](#development)  
+  * [Planning](#planning)
+  * [Future Additions](#future-additions)
+---
+---
 
-1. Clone the repo
-2. Rename the folder to your Project, you can use the `mv` command like `mv mern-boilerplate yourprojectname`
-3. Delete the `.git` file, when you are in the root of the file, you can press `ls` and you should see a `.git` file, then go ahead and run `rm -rf .git`
+
+## Overview  
+*Sheet Music Maker* is sheet music editing software with a community aspect to it. A user can share their works with any other user that follows them and vise versa. This application was my final project for my full-stack bootcamp and was made to showcase my skills learned up to this point, especially with React. It is still in its early stages and its editing capabilities are limited to simply adding quarter notes, erasing notes and editing text on the page.
+
+---
+---
+## Getting Started  
+Here is the link for
+[Sheet Music Maker](https://sheetmusicmaker.herokuapp.com/)  
 
 
-#### Setup your git repo
+---
+---
+## Technologies Used  
+Javascript, HTML, CSS, React, Semantic UI, Node.js, Express.js and MongoDB  
 
-1. go to github and create your github and create a repo (Without a readme or liscense you can add that later!)
-2.  Then follow the directions on github that says ```…or create a new repository on the command line```
+---
+---
+## Screenshots
 
-it should look like this
+#### Landing Page simply shows the login
+![Landing Page](./public/LandingPage.png) 
+#### Home Page gives site info and some community stats
+![Home Page](./public/HomePage.png) 
+#### Opus Edit Page allows the user to edit a musical work
+![Opus Edit Page](./public/EditOpusPage.png) 
+#### Opus Index Page shows all the user's works and allows creation and deletion of works
+![Opus Index Page](./public/OpusIndexPage.png) 
 
-```
-git init
-git add .
-git commit -m "first commit"
-git remote add origin git@git.generalassemb.ly:SEI-CC/test.git // this will be whatever your address will be
-git push -u origin master
-```
+---
+---
+## Development  
+### *Planning*:  
+View the 
+[Trello](https://trello.com/b/IpP1CjSF/sheet-music) board with wireframes and ERD. 
 
-#### Setup the App
 
-```npm install```
-
-*DOTENV*
-
-`touch .env`
-
-add your variables
-
-```
-DATABASE_URL=mongodb://localhost:27017/testagramV2
-BUCKET_NAME=catcollectorone
-SECRET=mysecretforjwt
-```
-
-The app is configured, to use those respective key names for the database, jwt secret and aws bucket, of course you'll have your own values
+---
+### *Future Additions*:  
+* Flesh out the edit tool pallet to include all musical options (ie. all notes, rests and dynamics)
+* Allow multiple pages for an opus
+* Allow measure bar lines to be shifted around
+* Allow the insertion and deletion of measures
+* Implement the ability to print the opera
+* Allow all elements on the staff to be moved around
+* Ability to undo and redo edits on opera
+* Play a musical pitch when a note is inserted
+* Ability have audible playback of the piece upon a button click
+* Allow users to leave messages attached to another user's work
