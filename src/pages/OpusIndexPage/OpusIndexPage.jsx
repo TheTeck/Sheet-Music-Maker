@@ -6,7 +6,7 @@ import FileOptionControls from '../../components/FileOptionControls/FileOptionCo
 import OpusIndex from '../../components/OpusIndex/OpusIndex';
 import NewOpusForm from '../../components/NewOpusForm/NewOpusForm';
 import * as operaApi from '../../utils/opus-api';
-import { Grid, Header, Modal } from 'semantic-ui-react';
+import { Grid, Header, Modal, Segment } from 'semantic-ui-react';
 import './OpusIndexPage.css';
 
 export default function OpusIndexPage({ user, handleLogout }) {
@@ -94,7 +94,14 @@ export default function OpusIndexPage({ user, handleLogout }) {
                     </Grid.Column>
                 </Grid>
 
-                <OpusIndex user={user} opera={opera} editOpus={editOpus} isUser={true} />
+                {
+                    opera.length > 0 ?
+                        <OpusIndex user={user} opera={opera} editOpus={editOpus} isUser={true} />
+                        : <Segment padded="very">
+                            <Header as='h2'>You have no works yet!</Header>
+                            <Header as='h3'>To get started writing music, just click the "New File" icon (it's the one on the left with a <span style={{ color: 'green' }}>green</span> plus).</Header>
+                        </Segment>
+                }
                 
                 <Modal
                     dimmer='blurring'
