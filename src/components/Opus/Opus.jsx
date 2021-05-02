@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Page from '../../components/Page/Page';
 import "./Opus.css";
 
-export default function Opus({ opus, makeChanges, getUpdatedElement, current}) {
+export default function Opus({ opus, makeChanges, getUpdatedElement, current, isUser }) {
 
   const [pageNumber, setPageNumber] = useState(0)
   const [data, setData] = useState(opus.music.split('_p'))
@@ -17,6 +17,7 @@ export default function Opus({ opus, makeChanges, getUpdatedElement, current}) {
   return (
     <div className="page">
       <Page 
+        isUser={isUser}
         pageNumber={pageNumber} 
         data={data[pageNumber]} 
         updateMusic={updateMusic}

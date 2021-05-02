@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Title.css";
 
-export default function Title({ opusTitle, getUpdatedElement }) {
+export default function Title({ opusTitle, getUpdatedElement, isUser }) {
   const [title, setTitle] = useState(opusTitle);
   const [isSettingTitle, setIsSettingTitle] = useState(false);
 
@@ -26,15 +26,18 @@ export default function Title({ opusTitle, getUpdatedElement }) {
 
   return (
     <>
-      {isSettingTitle ? (
-        <form onSubmit={handleSubmit}>
-          <div style={{ height: '64px' }}>
-            <input type="text" style={{ fontSize: '50px'}}value={title} onChange={handleChange} />
-          </div>
-        </form>
-      ) : (
-        <h1 onClick={handleSetTitle}>{title}</h1>
-      )}
+      {
+        isUser ?
+          isSettingTitle ? (
+            <form onSubmit={handleSubmit}>
+              <div style={{ height: '64px' }}>
+                <input type="text" style={{ fontSize: '50px'}}value={title} onChange={handleChange} />
+              </div>
+            </form>
+          ) : (
+            <h1 onClick={handleSetTitle}>{title}</h1>
+          ) : <h1>{title}</h1>
+     }
     </>
   );
 }

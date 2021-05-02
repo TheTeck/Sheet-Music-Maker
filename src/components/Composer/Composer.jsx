@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Composer.css";
 
-export default function Composer({ comp, getUpdatedElement }) {
+export default function Composer({ comp, getUpdatedElement, isUser }) {
 
   const [composer, setComposer] = useState(comp);
   const [isSettingComposer, setIsSettingComposer] = useState(false);
@@ -29,15 +29,16 @@ export default function Composer({ comp, getUpdatedElement }) {
   return (
     <>
       {
-        isSettingComposer ? (
-          <form onSubmit={handleSubmitComposer}>
-            <div>
-              <input type="text" id="composer" value={composer} onChange={handleChange} />
-            </div>
-          </form>
-        ) : (
-          <div onClick={handleSetComposer}>{composer}</div>
-        )
+        isUser ?
+          isSettingComposer ? (
+            <form onSubmit={handleSubmitComposer}>
+              <div>
+                <input type="text" id="composer" value={composer} onChange={handleChange} />
+              </div>
+            </form>
+          ) : (
+            <div onClick={handleSetComposer}>{composer}</div>
+          ) : <div>{composer}</div>
       }
     </>
   );

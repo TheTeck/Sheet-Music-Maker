@@ -2,14 +2,15 @@ import React from 'react';
 import { Card } from 'semantic-ui-react';
 import './OpusCard.css';
 
-export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus, isUser}) {
+export default function OpusCard ({ opus, deleteOpus, removeOpus, showOpus, isUser}) {
 
     function handleDeleteClick() {
         removeOpus(opus._id)
     }
 
-    function handleEditClick() {
-        editOpus(opus)
+    function handleShowClick() {
+        console.log('handleShowClick', opus)
+        showOpus(opus)
     }
 
     return (
@@ -31,7 +32,7 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus, isUs
                                     </Card.Content>
                                 </Card.Content>
                             </div>
-                        :   <div onClick={handleEditClick} className="card-container-inner">
+                        :   <div onClick={handleShowClick} className="card-container-inner">
                                 <Card.Content>
                                     <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
                                     <Card.Content vertical="true">
@@ -47,7 +48,7 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus, editOpus, isUs
                     </Card>
                     :
                     <Card fluid >
-                        <div className="card-container-inner">
+                        <div className="card-container-inner" onClick={handleShowClick}>
                             <Card.Content>
                                 <Card.Header style={{ color: 'black'}}>{opus.title}</Card.Header>
                                 <Card.Content vertical="true">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
@@ -12,6 +12,7 @@ export default function OpusEdit ({ user, handleLogout}) {
 
     const location = useLocation();
     const [opus, setOpus] = useState(location.state.opus);
+    const [isUser, setIsUser] = useState(location.state.isUser)
     const [changes, setChanges] = useState(false);
     const [currentTool, setCurrentTool] = useState('qNote');
 
@@ -58,17 +59,23 @@ export default function OpusEdit ({ user, handleLogout}) {
         }
     }
 
+    useEffect(() => {
+        if (!isUser)
+            setCurrentTool('');
+    }, [])
+
     return (
         <div className="page-container">
             <PageHeader user={user} handleLogout={handleLogout} />
             <div className="body"> 
                 <UserNav user={user} isOpusEdit={true} changes={changes} saveChanges={saveChanges} ignoreChanges={ignoreChanges} />
                 <Opus 
+                    isUser={isUser}
                     opus={opus} 
                     makeChanges={makeChanges} 
                     getUpdatedElement={getUpdatedElement} 
                     current={currentTool} />
-                <ToolPallet getTool={getTool} current={currentTool} />
+                { isUser ? <ToolPallet getTool={getTool} current={currentTool} /> : '' }
                 <>
                 {
                     changes ? 

@@ -6,7 +6,7 @@ import Staff from '../../components/Staff/Staff';
 import './Page.css';
 
 
-export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement, updateMusic, current }) {
+export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement, updateMusic, current, isUser }) {
 
     const [staves, setStaves] = useState(data.split('_s'));
 
@@ -23,10 +23,10 @@ export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedEl
             {
                 pageNumber === 0 ?
                 <>
-                    <Title opusTitle={opus.title} getUpdatedElement={getUpdatedElement} />
+                    <Title opusTitle={opus.title} getUpdatedElement={getUpdatedElement} isUser={isUser} />
                     <div className="info">
-                        <Composer comp={opus.composer} getUpdatedElement={getUpdatedElement} />
-                        <ScoreInfo opusData={opus.opusData} getUpdatedElement={getUpdatedElement} />
+                        <Composer comp={opus.composer} getUpdatedElement={getUpdatedElement} isUser={isUser} />
+                        <ScoreInfo opusData={opus.opusData} getUpdatedElement={getUpdatedElement} isUser={isUser} />
                     </div> 
                 </> : ''
             }
@@ -36,6 +36,7 @@ export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedEl
                 staves.map((staff, index) => {
                     return (
                         <Staff key={index}
+                            isUser={isUser}
                             data={staff}
                             keySignature={opus.keySignature}
                             timeSignature={opus.timeSignature}

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import ErrorMessage from '../../components/ErrorMessage/ErrorMessage';
+import { useHistory } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
 import UserIndex from '../../components/UserIndex/UserIndex';
@@ -11,6 +11,7 @@ import './Friends.css'
 
 export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin }) {
 
+    const history = useHistory();
     const [modalActive, setModalActive] = useState(false);
     const [userOperaModalActive, setUserOperaModalActive] = useState(false);
     const [activeFriend, setActiveFriend] = useState('');
@@ -24,7 +25,6 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             bio: user.bio,
             friends: user.friends
         });
-
 
     async function getAllUsers() {
         try {
@@ -99,6 +99,16 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
         setFriendsUpdated(true)
     }
 
+    function showOpus(opus) {
+        history.push({
+            pathname: '/compose',
+            state: {
+                opus: opus,
+                isUser: false
+            }
+        });
+    }
+
     return (
         <div className="page-container">
             <PageHeader user={user} handleLogout={handleLogout} />
@@ -126,7 +136,7 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
                 open={userOperaModalActive}
                 >
                 <Modal.Header>View Their Works</Modal.Header>
-                <OpusIndex user={user} opera={activeFriendOpera} isUser={false}/>
+                <OpusIndex user={user} opera={activeFriendOpera} showOpus={showOpus} isUser={false}/>
             </Modal>
         </div>
     )

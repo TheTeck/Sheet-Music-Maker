@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Note from '../../components/Note/Note';
 import './Measure.css';
 
-export default function Measure({ data, wth, current, updateMeasure, timeSig, num}) {
+export default function Measure({ data, wth, current, updateMeasure, timeSig, num, isUser }) {
 
     const [notes, setNotes] = useState(data === "" ? [] : data.split('.'))
 
@@ -37,15 +37,20 @@ export default function Measure({ data, wth, current, updateMeasure, timeSig, nu
     return (
         <div className="measure-outline" style={{ width: `${wth}px` }}>
             <div className="inner-measure-container">
-                <div id="F2" onClick={handleStaffClick} className="F2"></div>
-                <div id="E2" onClick={handleStaffClick} className="E2"></div>
-                <div id="D2" onClick={handleStaffClick} className="D2"></div>
-                <div id="C2" onClick={handleStaffClick} className="C2"></div>
-                <div id="B1" onClick={handleStaffClick} className="B1"></div>
-                <div id="A1" onClick={handleStaffClick} className="A1"></div>
-                <div id="G1" onClick={handleStaffClick} className="G1"></div>
-                <div id="F1" onClick={handleStaffClick} className="F1"></div>
-                <div id="E1" onClick={handleStaffClick} className="E1"></div>
+                {
+                    isUser ?
+                    <>
+                        <div id="F2" onClick={handleStaffClick} className="F2"></div>
+                        <div id="E2" onClick={handleStaffClick} className="E2"></div>
+                        <div id="D2" onClick={handleStaffClick} className="D2"></div>
+                        <div id="C2" onClick={handleStaffClick} className="C2"></div>
+                        <div id="B1" onClick={handleStaffClick} className="B1"></div>
+                        <div id="A1" onClick={handleStaffClick} className="A1"></div>
+                        <div id="G1" onClick={handleStaffClick} className="G1"></div>
+                        <div id="F1" onClick={handleStaffClick} className="F1"></div>
+                        <div id="E1" onClick={handleStaffClick} className="E1"></div>
+                        </> : ''
+                }
                 {output}
             </div>
         </div>
