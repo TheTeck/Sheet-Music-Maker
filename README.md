@@ -31,13 +31,13 @@ Javascript, HTML, CSS, React, Semantic UI, Node.js, Express.js and MongoDB
 ## Screenshots
 
 #### Landing Page simply shows the login
-![Landing Page](./public/LandingPage.png) 
+![Landing Page](./public/landingpage.png) 
 #### Home Page gives site info and some community stats
-![Home Page](./public/HomePage.png) 
+![Home Page](./public/homepage.png) 
 #### Opus Edit Page allows the user to edit a musical work
-![Opus Edit Page](./public/EditOpusPage.png) 
+![Opus Edit Page](./public/editopuspage.png) 
 #### Opus Index Page shows all the user's works and allows creation and deletion of works
-![Opus Index Page](./public/OpusIndexPage.png) 
+![Opus Index Page](./public/opusindexpage.png) 
 
 ---
 ---
