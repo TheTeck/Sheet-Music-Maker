@@ -26,7 +26,10 @@ function signup(user) {
 function update(data) {
   return fetch('/api/users', {
     method: 'PUT',
-    headers: new Headers({'Content-Type': 'application/json'}),
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }),
     body: JSON.stringify(data)
   }).then (res => {
     if (res.ok) return res.json();
@@ -59,7 +62,10 @@ function login(creds) {
 function getAll() {
   return fetch(BASE_URL, {
     method: 'GET',
-    headers: new Headers({'Content-Type': 'application/json'})
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    })
   }).then(res => {
     if (res.ok) return res.json();
     throw new Error('Error in the database');
@@ -69,7 +75,10 @@ function getAll() {
 function getOneUserById(id) {
   return fetch(BASE_URL + id, {
     method: 'GET',
-    headers: new Headers({'Content-Type': 'application/json'})
+    headers: new Headers({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    })
   }).then(res => {
     if (res.ok) return res.json();
     throw new Error('Error in the database');

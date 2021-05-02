@@ -8,10 +8,13 @@ router.post('/signup', upload.single('photo'), usersCtrl.signup);
 router.post('/login', usersCtrl.login);
 
 /*---------- Protected Routes ----------*/
-router.put('/', usersCtrl.update);
-router.get('/', usersCtrl.index);
-router.get('/:id', usersCtrl.show);
+router.put('/', isAuthorized, usersCtrl.update);
+router.get('/', isAuthorized, usersCtrl.index);
+router.get('/:id', isAuthorized, usersCtrl.show);
 
-
+function isAuthorized(req, res, next) {
+    if (req.user) return next();
+    res.redirect('/api/users/login');
+}
 
 module.exports = router;
