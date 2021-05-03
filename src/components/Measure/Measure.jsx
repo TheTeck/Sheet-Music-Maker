@@ -7,6 +7,7 @@ export default function Measure({ data, wth, current, updateMeasure, timeSig, nu
     const [notes, setNotes] = useState(data === "" ? [] : data.split('.'))
 
     function getNoteClick(index) {
+        // Remove the note at this index of the measure
         if (current === 'erase') {
             let temp = notes;
             temp.splice(index, 1);
@@ -18,11 +19,13 @@ export default function Measure({ data, wth, current, updateMeasure, timeSig, nu
 
     const output = notes.map((note, index) => {
         return (
+            // Can't use index for key, React messes up when deleting notes from array
             <Note key={Math.floor(Math.random() * 10000)} data={note} order={index} wth={wth} timeSig={timeSig} getNoteClick={getNoteClick} />
         )
     })
 
     function handleStaffClick (e) {
+        // Add a quarter note to the measure
         if (current === 'qNote' && notes.length < timeSig[0]) {
             let measureStr = notes.join('.');
             measureStr += measureStr === '' ? ('q,' + e.target.id) : ('.q,' + e.target.id);
@@ -40,6 +43,7 @@ export default function Measure({ data, wth, current, updateMeasure, timeSig, nu
                 {
                     isUser ?
                     <>
+                        {/* Draw pitch highlight and listen for clicks */}
                         <div id="F2" onClick={handleStaffClick} className="F2"></div>
                         <div id="E2" onClick={handleStaffClick} className="E2"></div>
                         <div id="D2" onClick={handleStaffClick} className="D2"></div>

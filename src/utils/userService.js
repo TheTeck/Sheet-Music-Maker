@@ -24,7 +24,8 @@ function signup(user) {
 }
 
 function update(data) {
-  return fetch('/api/users', {
+  console.log(BASE_URL + data.id)
+  return fetch(BASE_URL + data.id, {
     method: 'PUT',
     headers: new Headers({
       'Content-Type': 'application/json',

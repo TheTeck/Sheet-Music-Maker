@@ -9,7 +9,6 @@ export default function OpusCard ({ opus, deleteOpus, removeOpus, showOpus, isUs
     }
 
     function handleShowClick() {
-        console.log('handleShowClick', opus)
         showOpus(opus)
     }
 

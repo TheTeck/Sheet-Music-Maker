@@ -21,6 +21,7 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff, c
     }
 
     return (
+        // Draw the staff with lines and spaces
         <div className="staff-outline">
             <div className="staff-space"></div>
             <div className="staff-line"></div>
@@ -32,9 +33,11 @@ export default function Staff({ data, keySignature, timeSignature, firstStaff, c
 
             <div className="clef">𝄞</div>
 
+            {/* Draw the key signature */}
             <KeySignature keySig={keySignature} getSigWidth={getSigWidth} />
 
             <>
+            {/* If it is the first staff, draw the time signature */}
             {
                 firstStaff ? <TimeSignature timeSig={timeSignature} offset={41+sigWidth} /> : ''
             }

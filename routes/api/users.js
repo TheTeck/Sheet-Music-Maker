@@ -8,9 +8,9 @@ router.post('/signup', upload.single('photo'), usersCtrl.signup);
 router.post('/login', usersCtrl.login);
 
 /*---------- Protected Routes ----------*/
-router.put('/', isAuthorized, usersCtrl.update);
 router.get('/', isAuthorized, usersCtrl.index);
 router.get('/:id', isAuthorized, usersCtrl.show);
+router.put('/:id', isAuthorized, usersCtrl.update);
 
 function isAuthorized(req, res, next) {
     if (req.user) return next();

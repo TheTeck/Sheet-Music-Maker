@@ -35,7 +35,6 @@ export default function OpusEdit ({ user, handleLogout}) {
             ...opus,
             [element]: value
         })
-        console.log(value)
         makeChanges()
     }
 

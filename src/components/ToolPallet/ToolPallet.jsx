@@ -23,7 +23,7 @@ export default function ToolPallet ({ getTool, current }) {
             <Popup
                 trigger={
                     <div className="tool" onClick={handleToolClick}>
-                        <Icon id="erase" fitted="true" name="erase" 
+                        <Icon id="erase" fitted={true} name="erase" 
                             color={current === 'erase' ? "red" : "black"} ></Icon>
                     </div>
                 }

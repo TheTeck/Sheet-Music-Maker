@@ -34,7 +34,7 @@ async function index(req, res) {
 
 async function update(req, res) {
   try {
-    const user = await User.findOne({email: req.body.email});
+    const user = await User.findOne({_id: req.params.id});
     user.firstname = req.body.firstname;
     user.lastname = req.body.lastname;
     user.bio = req.body.bio;

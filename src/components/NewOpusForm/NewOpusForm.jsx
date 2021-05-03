@@ -22,6 +22,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
         { key: '6', text: '6', value: '6' }
     ]
 
+    // Will add more values when note to measure logic is refactored
     const durationOptions = [
         { key: '4', text: '4', value: '4' }
     ]
@@ -93,6 +94,7 @@ export default function NewOpusForm ({ user, handleAddOpus }) {
     function handleSubmit(e){
         e.preventDefault();
 
+        // Default 1 page opus
         const formattedOpus = {
             title: opus.title,
             composer: user.firstname + ' ' + user.lastname,

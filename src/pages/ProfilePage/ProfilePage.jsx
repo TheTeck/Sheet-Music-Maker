@@ -12,6 +12,7 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
   const [visible, setVisible] = useState(false)
   const [error, setError ] = useState('')
   const [state, setState]  = useState({
+    id: user._id,
     firstname: user.firstname,
     lastname: user.lastname,
     email: user.email,

@@ -6,7 +6,7 @@ import Staff from '../../components/Staff/Staff';
 import './Page.css';
 
 
-export default function Page({ pageNumber, data, opus, makeChanges, getUpdatedElement, updateMusic, current, isUser }) {
+export default function Page({ pageNumber, data, opus, getUpdatedElement, updateMusic, current, isUser }) {
 
     const [staves, setStaves] = useState(data.split('_s'));
 
