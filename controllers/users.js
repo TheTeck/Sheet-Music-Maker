@@ -11,8 +11,18 @@ module.exports = {
   login,
   update,
   index,
-  show
+  show,
+  deleteUser
 };
+
+async function deleteUser (req, res) {
+  try {
+    await User.findByIdAndDelete(req.params.id)
+    res.json({data: 'User removed'})
+  } catch (error) {
+    return res.stats(500).json(error)
+  }
+}
 
 async function show(req, res) {
   try {

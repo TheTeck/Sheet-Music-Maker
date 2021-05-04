@@ -11,6 +11,7 @@ router.post('/login', usersCtrl.login);
 router.get('/', isAuthorized, usersCtrl.index);
 router.get('/:id', isAuthorized, usersCtrl.show);
 router.put('/:id', isAuthorized, usersCtrl.update);
+router.delete('/:id', isAuthorized, usersCtrl.deleteUser);
 
 function isAuthorized(req, res, next) {
     if (req.user) return next();

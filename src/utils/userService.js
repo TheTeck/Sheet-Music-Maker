@@ -23,6 +23,18 @@ function signup(user) {
   //.then((token) => token.token);
 }
 
+function deleteUser(userId) {
+  return fetch(BASE_URL + userId, {
+    method: 'DELETE',
+    headers: new Headers({
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    })
+  }).then (res => {
+    if (res.ok) return res.json();
+    throw new Error('Unable to delete user!');
+  })
+}
+
 function update(data) {
   return fetch(BASE_URL + data.id, {
     method: 'PUT',
@@ -94,4 +106,5 @@ export default {
   update,
   getAll,
   getOneUserById,
+  deleteUser
 };

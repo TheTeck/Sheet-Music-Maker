@@ -27,6 +27,15 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
     })
   }
 
+  async function handleDeleteClick() {
+    try {
+      await userService.deleteUser(user._id);
+      handleLogout();
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   async function handleSubmit(e){
     e.preventDefault();
     try {
@@ -62,7 +71,17 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                             <p>Composer: <strong>{user.firstname} {user.lastname}</strong></p>
                             <Divider horizontal>My Bio:</Divider>
                             <p><strong>{user.bio ? user.bio : 'There is no bio, yet.'}</strong></p>
-                            <Button onClick={handleEditClick} color="youtube">Edit Profile</Button>
+                            <Button 
+                              onClick={handleEditClick} 
+                              color="youtube">Edit Profile
+                              </Button>
+                            <Button
+                              onClick={handleDeleteClick}
+                              type="submit"
+                              className="btn"
+                              >
+                              Delete Profile
+                              </Button>
                         </Grid.Column>
                     </Grid>
                 </Segment>
@@ -72,31 +91,31 @@ export default function ProfilePage({ user, handleLogout, handleSignUpOrLogin })
                         <Form autoComplete="off"  onSubmit={handleSubmit}>
                             <Segment className="profile-edit" stacked> 
                                 <Form.Input                    
-                                name="firstname"
-                                placeholder="first name"
-                                value={state.firstname}
-                                onChange={handleChange}
-                                required
-                                />
+                                  name="firstname"
+                                  placeholder="first name"
+                                  value={state.firstname}
+                                  onChange={handleChange}
+                                  required
+                                  />
                                 <Form.Input                    
-                                name="lastname"
-                                placeholder="last name"
-                                value={state.lastname}
-                                onChange={handleChange}
-                                required
-                                />
+                                  name="lastname"
+                                  placeholder="last name"
+                                  value={state.lastname}
+                                  onChange={handleChange}
+                                  required
+                                  />
                                 <Form.TextArea                
-                                name="bio"
-                                placeholder={user.bio ? user.bio : "bio"}
-                                value={state.bio}
-                                onChange={handleChange}
-                                />
+                                  name="bio"
+                                  placeholder={user.bio ? user.bio : "bio"}
+                                  value={state.bio}
+                                  onChange={handleChange}
+                                  />
                                 <Button
-                                color="youtube"
-                                type="submit"
-                                className="btn"
-                                >
-                                Update Profile
+                                  color="youtube"
+                                  type="submit"
+                                  className="btn"
+                                  >
+                                  Update Profile
                                 </Button>
                             </Segment>
                             {error ? <ErrorMessage error={error} /> : null}

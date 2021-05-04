@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import PageHeader from '../../components/Header/Header';
 import UserNav from '../../components/UserNav/UserNav';
@@ -36,6 +36,26 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             setOtherUsers([...nonFriends]);
         } catch (error) {
             console.log(error);
+        }
+    }
+
+    async function removeDeadUsers() {
+        try {
+            const users = await userService.getAll();
+            const userIds = users.map(user => user._id)
+            const upToDateFriends = [];
+            user.friends.forEach(id => {
+                if (userIds.includes(id))
+                    upToDateFriends.push(id)
+            })
+            setState({
+                ...state,
+                friends: upToDateFriends
+            })
+            await userService.update(state);
+            handleSignUpOrLogin()
+        } catch (error) {
+            console.log(error)
         }
     }
 
@@ -108,6 +128,11 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
             }
         });
     }
+
+    useEffect(() => {
+        console.log('useEffect')
+        removeDeadUsers();
+    }, [])
 
     return (
         <div className="page-container">
