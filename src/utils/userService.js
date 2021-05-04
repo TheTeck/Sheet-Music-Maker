@@ -24,7 +24,6 @@ function signup(user) {
 }
 
 function update(data) {
-  console.log(BASE_URL + data.id)
   return fetch(BASE_URL + data.id, {
     method: 'PUT',
     headers: new Headers({

@@ -18,6 +18,7 @@ export default function FriendsPage({ user, handleLogout, handleSignUpOrLogin })
     const [otherUsers, setOtherUsers] = useState([]);
     const [friendsUpdated, setFriendsUpdated] = useState(false)
         const [state, setState]  = useState({
+            id: user._id,
             firstname: user.firstname,
             lastname: user.lastname,
             email: user.email,
